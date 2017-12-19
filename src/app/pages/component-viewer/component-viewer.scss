@@ -1,0 +1,69 @@
+@import '../../../styles/constants';
+
+app-component-viewer {
+  font-weight: 400;
+  padding: 20px $content-padding-side 50px;
+
+  @media ($mat-xsmall) {
+    padding-left: $content-padding-side-xs;
+    padding-right: $content-padding-side-xs;
+  }
+}
+
+.docs-component-viewer {
+  margin: 0 auto;
+  max-width: 940px;
+}
+
+.docs-component-viewer-section-tab {
+  text-transform: uppercase;
+}
+
+.docs-component-viewer-tabbed-content {
+  margin-bottom: 50px;
+}
+
+.docs-component-viewer-content {
+  position: relative;
+  min-height: 500px;
+
+  // Display outlet components with toc as flex and switch to
+  // vertical direction on small screens
+  component-overview, component-api {
+    display: flex;
+    align-items: flex-start;
+
+    @media (max-width: $small-breakpoint-width) {
+      flex-direction: column;
+    }
+  }
+
+  table-of-contents {
+    top: 35px;
+    position: sticky;
+
+    // Reposition on top of content on small screens and remove
+    // sticky positioning
+    @media (max-width: $small-breakpoint-width) {
+      order: -1;
+      position: inherit;
+      width: auto;
+      padding-left: 0;
+    }
+  }
+}
+
+.docs-component-view-text-content {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.docs-component-api,
+.docs-component-overview {
+  width: 80%;
+
+  @media (max-width: $small-breakpoint-width) {
+    width: 100%;
+    margin-right: 0;
+  }
+}

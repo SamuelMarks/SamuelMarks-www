@@ -1,0 +1,10 @@
+<mat-form-field>
+  <mat-select placeholder="Platform" shouldLabelFloat="false"
+              panelClass="example-panel-green"
+              [(ngModel)]="platformSelectd"
+              (selectionChange)=updateService($event)>
+    <mat-option *ngFor="let platform of platformPickerService.platforms" [value]=platform>
+      {{ platform }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

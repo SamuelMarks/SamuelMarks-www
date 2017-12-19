@@ -1,0 +1,9 @@
+.pad {
+  padding: 0 3em;
+}
+
+.docs-markdown-code {
+  display: block;
+  padding: 0 0 1em 1em;
+  white-space: pre-line;
+}

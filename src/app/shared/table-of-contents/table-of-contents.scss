@@ -1,0 +1,29 @@
+:host {
+  font-size: 13px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+.docs-toc-container {
+  box-sizing: border-box;
+  padding: 5px 0 10px 12px;
+}
+
+.docs-toc-heading {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+a {
+  line-height: 16px;
+  margin: 8px 0 0;
+  position: relative;
+  text-decoration: none;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.docs-level-h4 {
+  margin-left: 12px;
+}
