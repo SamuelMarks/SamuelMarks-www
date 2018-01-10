@@ -14,4 +14,14 @@ $accent: mat-palette($mat-pink, A200, A100, A400);
 
 $theme: mat-light-theme($primary, $accent);
 @include angular-material-theme($theme);
-@include material-docs-app-theme($theme);
+@include app-root-theme($theme);
+
+.light-colors {
+  background-color: mat-color($primary, default);
+  color: map-get($mat-light-theme-background, background);
+}
+
+.dark-colors {
+  background-color: map-get($mat-dark-theme-foreground, base);
+  color: map-get($mat-dark-theme-background, background);
+}

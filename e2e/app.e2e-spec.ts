@@ -1,13 +1,14 @@
-import {MaterialDocsAppPage} from './app.po';
+import { AppPage } from './app.po';
 
-describe('angular-io-v42 App', function () {
-  let page: MaterialDocsAppPage;
+describe('samuel-marks-www App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new MaterialDocsAppPage();
+    page = new AppPage();
   });
 
-  it('should do something', () => {
-    expect(1).toBe(1);
+  it('should display welcome message', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

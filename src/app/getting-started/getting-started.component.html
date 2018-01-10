@@ -1,0 +1,209 @@
+<div class="docs-markdown pad">
+  <h5 class="docs-markdown-h5">
+    This guides you to setting up your computer to run all my scaffolds.
+  </h5>
+
+  <p class="docs-markdown-p" *ngIf="os('Linux')">
+    Though this guide is for the Ubuntu linux; it should be easy to retrofit to others.
+  </p>
+
+  <p class="docs-markdown-p" *ngIf="os('macOS')">
+    Though this guide has been tested on macOS High Sierra; it will probably work on older versions.
+  </p>
+
+  <p class="docs-markdown-p" *ngIf="os('Windows')">
+    Follow this guide on Windows 7+.
+  </p>
+
+  <em>
+    All grey background assumes you are running in an active
+    <ng-container *ngIf="os('Windows')">Command Prompt (cmd.exe)</ng-container>
+    <ng-container *ngIf="os('macOS') || os('Linux')">Terminal</ng-container>
+    session
+  </em>
+
+  <h3 id="step-0-install-build-dependencies"
+      class="docs-header-link docs-markdown-h3">
+    Step 0: Install build dependencies
+  </h3>
+  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux')">
+    sudo apt update
+    sudo apt install build-essential git-core tcl
+  </code>
+
+  <a *ngIf="os('macOS')" href="https://developer.apple.com/downloads">Latest XCode and Command Line Tools</a>
+  <code class="lang-bash docs-markdown-code" *ngIf="os('macOS')">
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update
+    brew install git
+  </code>
+
+  <section class="docs-guide-content" *ngIf="os('Windows')">
+    Ensure you check "Add to PATH" whenever asked:
+    <ol>
+      <li><a class="docs-markdown-a"
+             href="https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15">
+        Build Tools for Visual Studio 2017
+      </a></li>
+      <li><a class="docs-markdown-a" href="https://git-scm.com/download/win">git</a></li>
+    </ol>
+    <p class="docs-markdown-p">Test that it installed correctly with:</p>
+    <code class="lang-bash docs-markdown-code">
+      git --version
+      cl /?
+    </code>
+  </section>
+
+  <h3 id="step-1-install-nodejs"
+      class="docs-header-link docs-markdown-h3">
+    Step 1: Install Node.js
+  </h3>
+  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux') || os('macOS')">
+    curl -L https://git.io/n-install | bash -s -- -y lts
+  </code>
+  <p class="docs-markdown-p" *ngIf="os('Windows')">
+    Download and setup from latest: <a class="docs-markdown-a" href="https://nodejs.org/en/download/">'Windows Installer
+    (.msi)' [LTS]</a>.
+  </p>
+  <p class="docs-markdown-p">Test that it installed correctly with:</p>
+  <code class="lang-bash docs-markdown-code">
+    node --version
+    npm --version
+  </code>
+
+  <h3 id="step-2-install-redis"
+      class="docs-header-link docs-markdown-h3">
+    Step 2: Install Redis
+  </h3>
+  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux')">
+    # Alternatively build from source. Quick guide: https://askubuntu.com/a/868862
+    sudo add-apt-repository ppa:chris-lea/redis-server
+    sudo apt update
+    sudo apt install redis-server
+  </code>
+  <code class="lang-bash docs-markdown-code" *ngIf="os('macOS')">
+    brew install redis
+    brew services start redis
+  </code>
+
+  <p class="docs-markdown-p" *ngIf="os('Windows')">
+    Download and install the <a class="docs-markdown-a" href="https://github.com/MicrosoftArchive/redis/releases">latest
+    .msi</a>.
+  </p>
+
+  <p class="docs-markdown-p">You can test it's installed and running with:</p>
+  <code class="lang-bash docs-markdown-code">
+    redis-cli ping
+  </code>
+  <p class="docs-markdown-p">If that failed, open a new session and run this, then try the ping again:</p>
+  <code class="lang-bash docs-markdown-code">
+    redis-server
+  </code>
+
+  <h3 id="step-3-install-postgres"
+      class="docs-header-link docs-markdown-h3">
+    Step 3: Install and configure Postgres
+  </h3>
+
+  <p class="docs-markdown-p" *ngIf="os('Linux')">
+    Follow <a class="docs-markdown-a" href="https://www.postgresql.org/download/linux/ubuntu/">their official guide</a>.
+    I prefer using latest version from their apt repository.
+  </p>
+  <p class="docs-markdown-p" *ngIf="os('macOS')">
+    Follow <a class="docs-markdown-a" href="https://www.postgresql.org/download/macosx/">their official guide</a>.
+    I prefer the <a class="http://www.enterprisedb.com/products/pgdownload.do#macosx">EnterpriseDB package</a>.
+  </p>
+  <p class="docs-markdown-p" *ngIf="os('Windows')">
+    Run this in an Administrator Command Prompt (<a class="docs-markdown-a"
+                                                    href="https://technet.microsoft.com/en-us/library/cc947813(v=ws.10).aspx">how-to</a>):
+  </p>
+
+  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux') || os('macOS')">
+    POSTGRES_DB_USER='REPLACE_ME'
+    REST_PASS='REPLACE_ME' # recommend using `read -s REST_PASS`
+    POSTGRES_DB_NAME='REPLACE_ME'
+
+    createuser --superuser "$POSTGRES_DB_USER"
+    psql -c "CREATE USER $POSTGRES_DB_USER WITH LOGIN PASSWORD '$REST_PASS';"
+    createdb "$POSTGRES_DB_NAME" --owner "$POSTGRES_DB_USER"
+    export RDBMS_URI="postgres://$POSTGRES_DB_USER:$REST_PASS@localhost/$POSTGRES_DB_NAME"
+    # ^Recommend adding this `export` line to your ~/.bash_profile
+  </code>
+  <code class="lang-batch docs-markdown-code" *ngIf="os('Windows')">
+    set POSTGRES_DB_USER="REPLACE_ME"
+    set REST_PASS="REPLACE_ME"
+    set POSTGRES_DB_NAME="REPLACE_ME"
+
+    createuser --superuser "%POSTGRES_DB_USER%"
+    psql -c "CREATE USER %POSTGRES_DB_USER% WITH LOGIN PASSWORD '%REST_PASS%';"
+    createdb "%POSTGRES_DB_NAME%" --owner "%POSTGRES_DB_USER%"
+
+    setx RDBMS_URI "postgres://%POSTGRES_DB_USER%:%REST_PASS%@localhost/%POSTGRES_DB_NAME%"
+    :: This last line will add RDBMS_URI to your environment
+  </code>
+  <p *ngIf="os('Linux') || os('macOS')">
+    Alternatively use <a class="docs-markdown-a"
+                         href="https://github.com/stereostream/stereostream-scripts/blob/master/init_postgres.bash">my
+    script</a>.
+  </p>
+  <p class="docs-markdown-p">You can test it's installed and running with:</p>
+  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux') || os('macOS')">
+    psql "$RDBMS_URI" -c 'SELECT 1'
+  </code>
+  <code class="lang-bash docs-markdown-code" *ngIf="os('Windows')">
+    psql "%RDBMS_URI%" -c "SELECT 1"
+  </code>
+
+  <h3 id="step-4-install-android"
+      class="docs-header-link docs-markdown-h3">
+    Step 4: Install Android dependencies and IDE
+  </h3>
+
+  <p class="docs-markdown-p">
+    See <a class="docs-markdown-a" href="https://developer.android.com/studio/install.html">official install guide</a>.
+  </p>
+
+  <h3 id="step-5-install-global-nodejs-packages"
+      class="docs-header-link docs-markdown-h3">
+    Step 5: Install global Node.js packages
+  </h3>
+
+  <code class="lang-bash docs-markdown-code">
+    npm i -g bunyan typings typescript @angular/cli
+  </code>
+
+  <h3 id="step-6-development-backend"
+      class="docs-header-link docs-markdown-h3">
+    Step 6: Development backend (Node.js)
+  </h3>
+  <code class="lang-bash docs-markdown-code">
+    git clone https://github.com/SamuelMarks/restify-orm-scaffold
+    cd restify-orm-scaffold
+    typings i
+    tsc
+    npm start
+  </code>
+
+  <h3 id="step-7-angular-frontend"
+      class="docs-header-link docs-markdown-h3">
+    Step 7: Angular frontend (web)
+  </h3>
+  <code class="lang-bash docs-markdown-code">
+    git clone https://github.com/SamuelMarks/ng-material-scaffold
+    cd ng-material-scaffold
+    npm i
+    npm start
+  </code>
+
+  <h3 id="step-8-android"
+      class="docs-header-link docs-markdown-h3">
+    Step 8: Android
+  </h3>
+  <code class="lang-bash docs-markdown-code">
+    git clone https://github.com/SamuelMarks/android-auth-scaffold
+  </code>
+
+  <p class="docs-markdown-p">
+    Now open that in Android Studio; build and run it.
+  </p>
+</div>
