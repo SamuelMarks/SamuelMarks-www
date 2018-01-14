@@ -61,3 +61,14 @@
     margin: 0;
   }
 }
+
+@media (max-width: 400px) {
+  .docs-navbar-hide-vsmall {
+    display: none;
+  }
+}
+
+a {
+  color: whitesmoke;
+  text-decoration: none;
+}

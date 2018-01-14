@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatIconModule, MatSelectModule, MatToolbarModule } from '@angular/material';
 
 import { NavbarComponent } from './navbar.component';
 import { PlatformPickerModule } from '../platform-picker/platform-picker.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    CommonModule, FlexLayoutModule, MatButtonModule, MatIconModule, MatToolbarModule, MatSelectModule,
+    CommonModule, RouterModule,
+    MatButtonModule, MatIconModule, MatToolbarModule, MatSelectModule,
     PlatformPickerModule
   ],
   declarations: [NavbarComponent],

@@ -25,3 +25,7 @@ $theme: mat-light-theme($primary, $accent);
   background-color: map-get($mat-dark-theme-foreground, base);
   color: map-get($mat-dark-theme-background, background);
 }
+
+.docs-markdown-code {
+  background: rgba(0, 0, 0, 0.03);
+}

@@ -41,6 +41,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Deploy distribution
+First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular-cli-ghpages), then:
 
     ngh --repo=https://github.com/SamuelMarks/SamuelMarks.github.io --message='Using angular-cli-ghpages' --branch='master'
 
