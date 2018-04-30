@@ -16,15 +16,15 @@
   </div>
 </header>
 
-<div class="docs-homepage-promo">
-  <div class="docs-homepage-row">
-    <div class="docs-homepage-promo-img">
-      <app-svg-viewer
-        src="../assets/img/homepage/sprintzerotoapp.svg"
-        scaleToContainer="true"></app-svg-viewer>
-    </div>
-    <div class="docs-homepage-promo-desc">
-      <h2>Starter scaffolds</h2>
+<div class="main">
+  <div fxLayout="row" fxLayout.xs="column">
+    <app-svg-viewer fxFlex="40" fxHide.xs
+                    src="../assets/img/homepage/sprintzerotoapp.svg"
+                    scaleToContainer="true">
+    </app-svg-viewer>
+
+    <div class="docs-homepage-promo-desc" fxFlex="60">
+      <h2><a class="docs-markdown-a" href="https://github.com/SamuelMarks">Starter scaffolds</a></h2>
       <ul>
         <li><a class="docs-markdown-a" href="https://github.com/SamuelMarks/restify-orm-scaffold">Node.JS (multi-ORM;
           multi-server [restify et al.])</a></li>
@@ -35,13 +35,14 @@
       </ul>
     </div>
   </div>
-  <div class="docs-homepage-row docs-homepage-reverse-row">
-    <div class="docs-homepage-promo-img">
-      <app-svg-viewer
-        src="../assets/img/homepage/fastandconsistent.svg"
-        scaleToContainer="true"></app-svg-viewer>
-    </div>
-    <div class="docs-homepage-promo-desc">
+
+  <div fxLayout="row-reverse" fxLayout.xs="column">
+    <app-svg-viewer fxFlex="40" fxHide.xs
+                    src="../assets/img/homepage/fastandconsistent.svg"
+                    scaleToContainer="true">
+    </app-svg-viewer>
+
+    <div fxFlex="60">
       <h2><a class="docs-markdown-a" href="https://github.com/stereostream">StereoStream</a></h2>
       <p>WebRTC and WebSockets powered multi-webcam broadcast streaming solution. <a class="docs-markdown-a"
                                                                                      href="https://github.com/stereostream/stereostream-angular">Web</a>;
@@ -49,13 +50,15 @@
           class="docs-markdown-a" href="https://github.com/stereostream/stereostream-rest-api">REST API</a>.</p>
     </div>
   </div>
-  <div class="docs-homepage-row">
-    <div class="docs-homepage-promo-img">
-      <app-svg-viewer
-        src="../assets/img/homepage/versatile.svg"
-        scaleToContainer="true"></app-svg-viewer>
-    </div>
-    <div class="docs-homepage-promo-desc">
+
+
+  <div fxLayout="row" fxLayout.xs="column">
+    <app-svg-viewer fxFlex="40" fxHide.xs
+                    src="../assets/img/homepage/versatile.svg"
+                    scaleToContainer="true">
+    </app-svg-viewer>
+
+    <div class="docs-homepage-promo-desc" fxFlex="60">
       <h2><a class="docs-markdown-a" href="http://offscale.io">Offscale</a></h2>
       <ul>
         <li><a class="docs-markdown-a" href="https://github.com/offscale/offstrategy">CLI to create nodes on any of 50+
@@ -66,20 +69,20 @@
       </ul>
     </div>
   </div>
-  <!--
-  <div class="docs-homepage-row docs-homepage-reverse-row">
-    <div class="docs-homepage-promo-img">
-      <app-svg-viewer
-        src="../assets/img/homepage/optimized.svg"
-        scaleToContainer="true"></app-svg-viewer>
-    </div>
-    <div class="docs-homepage-promo-desc">
-      <h2>Optimized for Angular</h2>
-      <p>Built by the Angular team to integrate seamlessly with Angular.</p>
-    </div>
+</div>
+<!--
+<div class="docs-homepage-row docs-homepage-reverse-row">
+  <div class="docs-homepage-promo-img">
+    <app-svg-viewer
+      src="../assets/img/homepage/optimized.svg"
+      scaleToContainer="true"></app-svg-viewer>
   </div>
-  -->
-  <div class="docs-homepage-bottom-start">
-    <a mat-raised-button class="docs-button" routerLink="/docs/getting-started">Get started</a>
+  <div class="docs-homepage-promo-desc">
+    <h2>Optimized for Angular</h2>
+    <p>Built by the Angular team to integrate seamlessly with Angular.</p>
   </div>
+</div>
+-->
+<div class="docs-homepage-bottom-start">
+  <a mat-raised-button class="docs-button" routerLink="/docs/getting-started">Get started</a>
 </div>

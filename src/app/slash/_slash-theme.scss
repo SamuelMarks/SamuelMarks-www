@@ -18,8 +18,8 @@
       color: mat-color($primary);
     }
 
-    .docs-homepage-row {
-      color: mat-color($foreground, secondary-text);
+    svg {
+      max-width: 90%;
     }
   }
 }
