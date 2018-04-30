@@ -43,7 +43,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Deploy distribution
 First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular-cli-ghpages), then:
 
-    ngh --repo=https://github.com/SamuelMarks/SamuelMarks.github.io --message='Using angular-cli-ghpages' --branch='master'
+    ng build -prod -aot
+    ngh --repo=https://github.com/SamuelMarks/SamuelMarks.github.io --branch='master' --message='Using angular-cli-ghpages'
 
 ## Derived
 
