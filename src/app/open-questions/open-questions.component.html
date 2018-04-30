@@ -1,0 +1,58 @@
+<div class="main" style="margin-top: 5em">
+  <h1 class="mat-h1">Open questions</h1>
+  <p>There are a few machine-learning research questions that I'm trying to solve in the short-term.</p>
+
+  <h2 class="mat-h2">Multivariate regression across medical images and patient records</h2>
+
+  <h4>Idea 0</h4>
+  <p>I was thinking that have a worker neural network doing the heavy lifting (maybe 3-5 NN all up) would do the
+    trick. To keep epochs manageable, was thinking about the Meta-Learning and One-Shot Learning literature. But maybe
+    that wouldn't
+    work?</p>
+
+  <p>Here is an exerpt from an email I sent to an AI expert recently:</p>
+  <blockquote>
+    <p>Hey so was thinking, if you have a secondary neural network for optimising the first neural network, couldn't you
+      encode say image data in one, and patient data in another?</p>
+
+    <p>Regularly we use multivariate regression—potentially via neural networking—on patient data to infer trends. For
+      the problems I work on, these are risk factors for developing blindness-causing diseases.</p>
+
+    <p>On the image side, I have a bunch of health and unhealthy images, and am currently just working out how to
+      segment the classification correctly (more of the time). But it is longitudinal data, so could always combine it
+      with information helping it say: these are healthy images for a patient that will become unhealthy.</p>
+
+    <p>On the text side, I have general demographic information like gender, age, ethnicity and a few more specific [to
+      glaucoma] metrics.</p>
+
+    <p>How would you combine these two datasets? - Such that given a new person walking off the street, we can emit one
+      number saying their probability of going blind in next k years (assuming no intervention).</p>
+
+    <em>[multivariate regression over images and numerical patient data]</em>
+  </blockquote>
+
+  <h4>Idea 1</h4>
+  <p>Or maybe adding an extra channel to a convolutional neural network?</p>
+
+  <p>Encode the patient data in a hidden channel. Maybe figure out encoding with spatial relevant, or just hack
+    specialised code for that last channel.</p>
+
+  <h4>Idea 2</h4>
+  <p>Jiquan Ngiam, Aditya Khosla, Mingyu Kim, Juhan Nam, Honglak Lee, and Andrew Y. Ng. 2011. Multimodal deep learning.
+    In Proceedings of the 28th International Conference on International Conference on Machine Learning (ICML'11), Lise
+    Getoor and Tobias Scheffer (Eds.). Omnipress, USA, 689-696.</p>
+
+  <h2 class="mat-h2">Expand existing glaucoma AI</h2>
+  Current Glaucoma CNN works on a non-public dataset (the <em>Blue Mountains Eye Study</em>).
+
+  <h3>Idea 0: Transfer learning</h3>
+
+  <h3>Idea 1: Incorporate public glaucoma datasets</h3>
+
+  <h3>Idea 2: Incorporate NN for optic disc segmenetation</h3>
+  Sevastopolsky A., Optic disc and cup segmentation methods for glaucoma detection with modification of U-Net
+  convolutional neural network, Pattern Recognition and Image Analysis 27 (2017), no. 3, 618–624.
+
+  <h3>Idea 3: Expand classifications to include Diabetic Retinopathy</h3>
+  See Kaggle competition open-source solutions for concepts + datasets.
+</div>
