@@ -1,4 +1,57 @@
 <div class="main" style="margin-top: 5em">
+  <h1 class="mat-h1">Fun little project</h1>
+  Or, instead of tackling the 'open questions' which are more relevant to my PhD, could have a bit of fun with:
+
+  <h1 class="mat-h1" id="maybe-drink">Maybe drink</h1>
+  <p>/What are the chances</p>
+  <h2 class="mat-h2" id="approach">Approach</h2>
+  <ol type="1">
+    <li>Take a map dataset</li>
+    <li>Look for all coffee shops (or whatever) [and maybe population densities]</li>
+    <li>Remove all coffee shops</li>
+    <li>Based on population densities in zoning rules, infer if there is a coffeeshop</li>
+  </ol>
+  <h3 id="go-further">Go further</h3>
+  <ol start="5" type="1">
+    <li>Search for coffee</li>
+    <li>Build an app</li>
+    <li>As you’re walking/driving along, it’ll buzz and say “there probably a coffeeshop within 20 meters. 88.42%
+      coffeeshop; 70% grocery shop”
+    </li>
+  </ol>
+  <h3 id="generalise">Generalise</h3>
+  <p>Actually let’s generalise to specifying a single drink you care about. Now it’s a find-me Lemonade app. Or a
+    find-me Kombucha app.</p>
+  <h2 class="mat-h2" id="deliverables">Deliverables</h2>
+  <p>In the course will build:</p>
+  <ol>
+    <li>Fully functional neural network with a location->amenity dataset</li>
+    <li>Fully functional mobile app</li>
+    <li>Hacked-together scraper to quickly categorise a coffeeshop, but also include a simple NN for this task, to
+      cluster keywords (for later search)
+    </li>
+    <li>Near-realtime integration with the map and the mobile’s GPS</li>
+  </ol>
+  <h2 class="mat-h2" id="data-science-topics">Data science topics</h2>
+  <h3 id="natural-language-processing-nlp">Natural Language Processing (NLP)</h3>
+  <ul>
+    <li>NLP to categorise [disambiguate] drink based on country, e.g.: lemonade in Australia generally doesn’t refer to
+      alcoholic beverages, whereas in America it does.
+    </li>
+  </ul>
+  <h3 id="web-scraping">Web scraping</h3>
+  <ul>
+    <li>Given an OSM location, get the homepage, parse out the <code>&lt;head&gt;</code> and keyword search the body
+    </li>
+  </ul>
+  <h3 id="multivariate-regression">Multivariate regression</h3>
+  <ul>
+    <li>Given a group of candidate stores, choose one most likely to have desired beverage</li>
+  </ul>
+
+
+  <hr>
+
   <h1 class="mat-h1">Open questions</h1>
   <p>There are a few machine-learning research questions that I'm trying to solve in the short-term.</p>
 
@@ -10,7 +63,7 @@
     that wouldn't
     work?</p>
 
-  <p>Here is an exerpt from an email I sent to an AI expert recently:</p>
+  <p>Here is an excerpt from an email I sent to an AI expert recently:</p>
   <blockquote>
     <p>Hey so was thinking, if you have a secondary neural network for optimising the first neural network, couldn't you
       encode say image data in one, and patient data in another?</p>
