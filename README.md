@@ -5,6 +5,10 @@ Bunch of guides for using my projects.
 
 Eventually will end up with links to subprojects (organisations); and very little actual content.
 
+## Build dist
+
+    rm -rf dist; ng build --prod
+
 ## Install
 
 Assumes you have latest Node.JS and npm on *nix machine, then just run:
@@ -43,8 +47,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Deploy distribution
 First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular-cli-ghpages), then:
 
-    ng build -prod -aot
-    ngh --repo=https://github.com/SamuelMarks/SamuelMarks.github.io --branch='master' --message='Using angular-cli-ghpages'
+    ng build --prod
+    cp README.md dist/samuel-marks-www
+    ngh --dir='dist/samuel-marks-www' --repo='https://github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message='Using angular-cli-ghpages'
+
 
 ## Derived
 
