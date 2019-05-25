@@ -36,17 +36,17 @@
       class="docs-header-link docs-markdown-h3">
     Step 0: Install build dependencies
   </h3>
-  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux')">
+  <pre class="docs-markdown-pre" *ngIf="os('Linux')"><code class="lang-bash docs-markdown-code">
     sudo apt update
     sudo apt install build-essential git-core tcl
-  </code>
+  </code></pre>
 
   <a *ngIf="os('macOS')" href="https://developer.apple.com/downloads">Latest XCode and Command Line Tools</a>
-  <code class="lang-bash docs-markdown-code" *ngIf="os('macOS')">
+  <pre class="docs-markdown-pre" *ngIf="os('macOS')"><code class="lang-bash docs-markdown-code">
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew update
     brew install git
-  </code>
+  </code></pre>
 
   <section class="docs-guide-content" *ngIf="os('Windows')">
     Ensure you check "Add to PATH" whenever asked:
@@ -58,43 +58,43 @@
       <li><a class="docs-markdown-a" href="https://git-scm.com/download/win">git</a></li>
     </ol>
     <p class="docs-markdown-p">Test that it installed correctly with:</p>
-    <code class="lang-bash docs-markdown-code">
+    <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
       git --version
       cl /?
-    </code>
+    </code></pre>
   </section>
 
   <h3 id="step-1-install-nodejs"
       class="docs-header-link docs-markdown-h3">
     Step 1: Install Node.js
   </h3>
-  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux') || os('macOS')">
+  <pre class="docs-markdown-pre" *ngIf="os('Linux') || os('macOS')"><code class="lang-bash docs-markdown-code">
     curl -L https://git.io/n-install | bash -s -- -y lts
-  </code>
+  </code></pre>
   <p class="docs-markdown-p" *ngIf="os('Windows')">
     Download and setup from latest: <a class="docs-markdown-a" href="https://nodejs.org/en/download/">'Windows Installer
     (.msi)' [LTS]</a>.
   </p>
   <p class="docs-markdown-p">Test that it installed correctly with:</p>
-  <code class="lang-bash docs-markdown-code">
+  <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     node --version
     npm --version
-  </code>
+  </code></pre>
 
   <h3 id="step-2-install-redis"
       class="docs-header-link docs-markdown-h3">
     Step 2: Install Redis
   </h3>
-  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux')">
+  <pre class="docs-markdown-pre" *ngIf="os('Linux')"><code class="lang-bash docs-markdown-code">
     # Alternatively build from source. Quick guide: https://askubuntu.com/a/868862
     sudo add-apt-repository ppa:chris-lea/redis-server
     sudo apt update
     sudo apt install redis-server
-  </code>
-  <code class="lang-bash docs-markdown-code" *ngIf="os('macOS')">
+  </code></pre>
+  <pre class="docs-markdown-pre" *ngIf="os('macOS')"><code class="lang-bash docs-markdown-code">
     brew install redis
     brew services start redis
-  </code>
+  </code></pre>
 
   <p class="docs-markdown-p" *ngIf="os('Windows')">
     Download and install the <a class="docs-markdown-a" href="https://github.com/MicrosoftArchive/redis/releases">latest
@@ -102,13 +102,13 @@
   </p>
 
   <p class="docs-markdown-p">You can test it's installed and running with:</p>
-  <code class="lang-bash docs-markdown-code">
+  <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     redis-cli ping
-  </code>
+  </code></pre>
   <p class="docs-markdown-p">If that failed, open a new session and run this, then try the ping again:</p>
-  <code class="lang-bash docs-markdown-code">
+  <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     redis-server
-  </code>
+  </code></pre>
 
   <h3 id="step-3-install-postgres"
       class="docs-header-link docs-markdown-h3">
@@ -128,7 +128,7 @@
                                                     href="https://technet.microsoft.com/en-us/library/cc947813(v=ws.10).aspx">how-to</a>):
   </p>
 
-  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux') || os('macOS')">
+  <pre class="docs-markdown-pre" *ngIf="os('Linux') || os('macOS')"><code class="lang-bash docs-markdown-code">
     POSTGRES_DB_USER='REPLACE_ME'
     REST_PASS='REPLACE_ME' # recommend using `read -s REST_PASS`
     POSTGRES_DB_NAME='REPLACE_ME'
@@ -138,8 +138,8 @@
     createdb "$POSTGRES_DB_NAME" --owner "$POSTGRES_DB_USER"
     export RDBMS_URI="postgres://$POSTGRES_DB_USER:$REST_PASS@localhost/$POSTGRES_DB_NAME"
     # ^Recommend adding this `export` line to your ~/.bash_profile
-  </code>
-  <code class="lang-batch docs-markdown-code" *ngIf="os('Windows')">
+  </code></pre>
+  <pre class="docs-markdown-pre" *ngIf="os('Windows')"><code class="lang-batch docs-markdown-code">
     set POSTGRES_DB_USER="REPLACE_ME"
     set REST_PASS="REPLACE_ME"
     set POSTGRES_DB_NAME="REPLACE_ME"
@@ -150,19 +150,19 @@
 
     setx RDBMS_URI "postgres://%POSTGRES_DB_USER%:%REST_PASS%@localhost/%POSTGRES_DB_NAME%"
     :: This last line will add RDBMS_URI to your environment
-  </code>
+  </code></pre>
   <p *ngIf="os('Linux') || os('macOS')">
     Alternatively use <a class="docs-markdown-a"
                          href="https://github.com/offscale/offsh-postgres">my
     script</a>.
   </p>
   <p class="docs-markdown-p">You can test it's installed and running with:</p>
-  <code class="lang-bash docs-markdown-code" *ngIf="os('Linux') || os('macOS')">
+  <pre class="docs-markdown-pre" *ngIf="os('Linux') || os('macOS')"><code class="lang-bash docs-markdown-code">
     psql "$RDBMS_URI" -c 'SELECT 1'
-  </code>
-  <code class="lang-bash docs-markdown-code" *ngIf="os('Windows')">
+  </code></pre>
+  <pre class="docs-markdown-pre" *ngIf="os('Windows')"><code class="lang-bash docs-markdown-code">
     psql "%RDBMS_URI%" -c "SELECT 1"
-  </code>
+  </code></pre>
 
   <h3 id="step-4-install-android"
       class="docs-header-link docs-markdown-h3">
@@ -178,42 +178,56 @@
     Step 5: Install global Node.js packages
   </h3>
 
-  <code class="lang-bash docs-markdown-code">
+  <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     npm i -g bunyan typings typescript @angular/cli
-  </code>
+  </code></pre>
 
   <h3 id="step-6-development-backend"
       class="docs-header-link docs-markdown-h3">
     Step 6: Development backend (Node.js)
   </h3>
-  <code class="lang-bash docs-markdown-code">
+  <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     git clone https://github.com/SamuelMarks/restify-orm-scaffold
     cd restify-orm-scaffold
     typings i
     tsc
     npm start
-  </code>
+  </code></pre>
 
   <h3 id="step-7-angular-frontend"
       class="docs-header-link docs-markdown-h3">
     Step 7: Angular frontend (web)
   </h3>
-  <code class="lang-bash docs-markdown-code">
+  <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     git clone https://github.com/SamuelMarks/ng-material-scaffold
     cd ng-material-scaffold
     npm i
     npm start
-  </code>
+  </code></pre>
 
   <h3 id="step-8-android"
       class="docs-header-link docs-markdown-h3">
     Step 8: Android
   </h3>
-  <code class="lang-bash docs-markdown-code">
+  <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     git clone https://github.com/SamuelMarks/android-auth-scaffold
-  </code>
+  </code></pre>
 
   <p class="docs-markdown-p">
     Now open that in Android Studio; build and run it.
   </p>
+
+  <h3 id="step-9-rebranding"
+      class="docs-header-link docs-markdown-h3">
+    Step 9: Branding
+  </h3>
+  <p>Now is a good time to rename everything. Close all open windows, and let's begin.</p>
+  <p>Install <span *ngIf="os('Windows')"><a href="https://chocolatey.org/packages/sed"><code>sed</code></a> and </span> <a href="https://github.com/sharkdp/fd"><code>fd</code></a>.
+  Then within each of the repo directories, or from a parent directory, run:</p>
+  <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
+    fd -t f -exec sed -i 's/ng-material-scaffold/projectname/g' {{'{}'}} \;
+    fd -t f -exec sed -i 's/NgMaterialScaffold/projectname/g' {{'{}'}} \;
+
+    fd -t f -exec sed -i 's/restify-orm-scaffold/projectname/g' {{'{}'}} \;
+  </code></pre>
 </div>

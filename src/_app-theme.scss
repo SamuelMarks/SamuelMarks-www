@@ -35,6 +35,6 @@
   @include docs-site-markdown-theme($theme);
   @include docs-site-svg-theme($theme);
   @include docs-site-tables-theme($theme);
-  @include footer-theme($theme);
   @include home-page-theme($theme);
+  @include footer-theme($theme);
 }

@@ -29,6 +29,7 @@
   }
 
   .docs-markdown-code {
+    display: block;
     background: rgba(mat-color($foreground, secondary-text), $exportBackgroundOpacity);
   }
 }
