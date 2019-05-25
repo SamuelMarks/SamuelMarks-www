@@ -221,13 +221,19 @@
       class="docs-header-link docs-markdown-h3">
     Step 9: Branding
   </h3>
-  <p>Now is a good time to rename everything. Close all open windows, and let's begin.</p>
-  <p>Install <span *ngIf="os('Windows')"><a href="https://chocolatey.org/packages/sed"><code>sed</code></a> and </span> <a href="https://github.com/sharkdp/fd"><code>fd</code></a>.
+  <p class="docs-markdown-p">Now is a good time to rename everything. Close all open windows, and let's begin.</p>
+  <p class="docs-markdown-p">Install <span *ngIf="os('Windows')"><a href="https://chocolatey.org/packages/sed"><code>sed</code></a> and </span> <a href="https://github.com/sharkdp/fd"><code>fd</code></a>.
   Then within each of the repo directories, or from a parent directory, run:</p>
   <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     fd -t f -exec sed -i 's/ng-material-scaffold/projectname/g' {{'{}'}} \;
     fd -t f -exec sed -i 's/NgMaterialScaffold/projectname/g' {{'{}'}} \;
 
     fd -t f -exec sed -i 's/restify-orm-scaffold/projectname/g' {{'{}'}} \;
+  </code></pre>
+
+  <p class="docs-markdown-p">You will need likely want to update descriptions and add DVCS repositories also. Install <a href="https://hub.github.com"><code>hub</code></a> with <code *ngIf="os('macOS')">brew install hub</code><span *ngIf="os('Linux')"><a href="https://github.com/github/hub/releases">latest package</a> for your platform.</span></p>
+
+  <pre class="docs-markdown-pre" *ngIf="os('Linux') || os('macOS')"><code class="lang-bash docs-markdown-code">
+    hub create organisation/"${{'{'}}PWD##*/{{'}'}}" -d 'Description here'
   </code></pre>
 </div>
