@@ -25,4 +25,4 @@ jobs:
           ng build --prod
           cp README.md dist/samuel-marks-www
           MSG="$(git show -s --format='%s' "$GITHUB_SHA")"
-          ngh --dir='dist/samuel-marks-www' --repo='https://github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG"
+          ngh --dir='dist/samuel-marks-www' --repo='https://github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --no-silent
