@@ -25,4 +25,9 @@ jobs:
           ng build --prod
           cp README.md dist/samuel-marks-www
           MSG="$(git show -s --format='%s' "$GITHUB_SHA")"
+          email_author="$(git log -1 --pretty=format:'%an <%ce>')"
+          author="${email_author% *}"
+          git config --global user.name "$author"
+          email="${email_author#*<}"; email="${email::-1}"
+          git config --global user.email "$email"
           ngh --dir='dist/samuel-marks-www' --repo='https://github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --no-silent
