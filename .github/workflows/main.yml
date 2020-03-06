@@ -1,0 +1,28 @@
+name: Compile Angular project into minified HTML, CSS and JS
+
+on: [push]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Prepare and deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm i -g npm
+          npm install -g @angular/cli typescript angular-cli-ghpages
+          npm ci
+          ng build --prod
+          cp README.md dist/samuel-marks-www
+          MSG="$(git show -s --format='%s' "$GITHUB_SHA")"
+          ngh --dir='dist/samuel-marks-www' --repo='https://github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG"
