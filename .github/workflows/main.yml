@@ -1,4 +1,4 @@
-name: Compile Angular project into minified HTML, CSS and JS
+name: GitHub Pages
 
 on: [push]
 
@@ -17,11 +17,11 @@ jobs:
 
       - name: Prepare and deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
         run: |
           npm i -g npm
-          npm install -g @angular/cli typescript angular-cli-ghpages
+          npm i -g @angular/cli typescript angular-cli-ghpages
           npm ci
           ng build --prod
           cp README.md dist/samuel-marks-www
