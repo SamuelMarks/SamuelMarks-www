@@ -16,7 +16,7 @@ import { appRoutes } from './app.routes';
     AppComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, RouterModule, RouterModule.forRoot(appRoutes),
+    BrowserModule, BrowserAnimationsModule, RouterModule, RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     MaterialImportModule,
     NavbarModule,
     FooterModule,
