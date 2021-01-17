@@ -23,6 +23,7 @@ jobs:
           npm i -g npm
           npm i -g @angular/cli typescript angular-cli-ghpages
           npm ci
+          ng add angular-cli-ghpages
           ng build --prod
           cp README.md dist/samuel-marks-www
           MSG="$(git show -s --format='%s' "$GITHUB_SHA")"
@@ -31,4 +32,5 @@ jobs:
           git config --global user.name "$author"
           email="${email_author#*<}"; email="${email::-1}"
           git config --global user.email "$email"
-          ngh --dir='dist/samuel-marks-www' --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --no-silent
+          ng deploy --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --no-silent
+
