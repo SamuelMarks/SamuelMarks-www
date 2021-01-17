@@ -25,12 +25,12 @@ jobs:
           npm ci
           ng add angular-cli-ghpages
           ng build --prod
-          cp README.md dist/samuel-marks-www
+          cp README.md dist/samuelmarks-github-io
           MSG="$(git show -s --format='%s' "$GITHUB_SHA")"
           email_author="$(git log -1 --pretty=format:'%an <%ce>')"
           author="${email_author% *}"
           git config --global user.name "$author"
           email="${email_author#*<}"; email="${email::-1}"
           git config --global user.email "$email"
-          ng deploy --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --no-silent
+          ng deploy samuelmarks-github-io --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --no-silent
 
