@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { OpenQuestionsComponent } from './open-questions.component';
+import {OpenQuestionsComponent} from './open-questions.component';
 
 describe('OpenQuestionsComponent', () => {
   let component: OpenQuestionsComponent;
   let fixture: ComponentFixture<OpenQuestionsComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [OpenQuestionsComponent]
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ OpenQuestionsComponent ]
     })
-      .compileComponents();
-  }));
+    .compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OpenQuestionsComponent);

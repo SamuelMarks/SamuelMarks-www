@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SlashComponent } from './slash.component';
+import {SlashComponent} from './slash.component';
 
 describe('SlashComponent', () => {
   let component: SlashComponent;
   let fixture: ComponentFixture<SlashComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [SlashComponent]
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ SlashComponent ]
     })
-      .compileComponents();
-  }));
+    .compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SlashComponent);

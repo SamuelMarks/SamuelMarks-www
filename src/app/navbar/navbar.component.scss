@@ -4,11 +4,11 @@
   align-items: center;
   padding: 8px 16px;
 
-  > .mat-button {
-    &:last-child {
-      margin-left: auto;
-    }
-  }
+> .mat-button {
+&:last-child {
+   margin-left: auto;
+ }
+}
 }
 
 .flex-spacer {

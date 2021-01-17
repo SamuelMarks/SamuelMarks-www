@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-slash',
@@ -7,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlashComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

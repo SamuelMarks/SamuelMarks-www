@@ -223,7 +223,7 @@
   </h3>
   <p class="docs-markdown-p">Now is a good time to rename everything. Close all open windows, and let's begin.</p>
   <p class="docs-markdown-p">Install <span *ngIf="os('Windows')"><a href="https://chocolatey.org/packages/sed"><code>sed</code></a> and </span> <a href="https://github.com/sharkdp/fd"><code>fd</code></a>.
-  Then within each of the repo directories, or from a parent directory, run:</p>
+    Then within each of the repo directories, or from a parent directory, run:</p>
   <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
     fd -t f -exec sed -i 's/ng-material-scaffold/projectname/g' {{'{}'}} \;
     fd -t f -exec sed -i 's/NgMaterialScaffold/projectname/g' {{'{}'}} \;

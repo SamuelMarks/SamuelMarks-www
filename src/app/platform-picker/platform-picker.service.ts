@@ -1,24 +1,24 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 export type Platform = 'macOS' | 'Linux' | 'Windows';
 
 @Injectable()
 export class PlatformPickerService {
-  platforms: Platform[] = [
+  public static platforms: Platform[] = [
     'macOS', 'Linux', 'Windows'
   ];
-  private _platform: string;
+  private platform: string = PlatformPickerService.platforms[1];
 
   constructor() {
     const platForm = localStorage.getItem('platform');
     if (platForm == null)
-      this._platform = this.platforms[1];
+      this.platform = PlatformPickerService.platforms[1];
   }
 
   // public get platform(): string {
   public getPlatform(): string {
     const platForm = localStorage.getItem('platform');
-    return platForm == null ? this._platform : platForm;
+    return platForm == null ? this.platform : platForm;
   }
 
   public is(platform: Platform): boolean {
@@ -26,8 +26,8 @@ export class PlatformPickerService {
   }
 
   // public set platform(platForm: string) {
-  public setPlatform(platForm: Platform) {
-    this._platform = platForm;
+  public setPlatform(platForm: Platform): void {
+    this.platform = platForm;
     localStorage.setItem('platform', platForm);
   }
 }

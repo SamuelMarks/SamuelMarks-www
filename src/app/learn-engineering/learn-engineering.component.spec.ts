@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LearnEngineeringComponent } from './learn-engineering.component';
+import {LearnEngineeringComponent} from './learn-engineering.component';
 
 describe('LearnEngineeringComponent', () => {
   let component: LearnEngineeringComponent;
   let fixture: ComponentFixture<LearnEngineeringComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [LearnEngineeringComponent]
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ LearnEngineeringComponent ]
     })
-      .compileComponents();
-  }));
+    .compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LearnEngineeringComponent);

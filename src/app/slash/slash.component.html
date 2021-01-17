@@ -2,7 +2,10 @@
   <div class="docs-header-section">
     <div class="docs-header-headline">
       <h1 class="mat-h1">Samuel Marks</h1>
-      <h2>Guide to my projects</h2>
+      <h2>New projects means boilerplate.
+        Scaling from a developer laptop to 10,000 nodes is possible&mdash;and from one engineering to 100s of teams&mdash;f</h2>
+        <!-- deployments is basically a lot of boilerplate. Production deployments majorly diverge from development.
+             These are the problems I'm targetting</h2> -->
     </div>
     <div class="docs-header-start">
       <a mat-raised-button class="docs-button" routerLink="/docs/getting-started" color="accent"
@@ -21,7 +24,7 @@
   <div fxLayout="row" fxLayout.xs="column">
     <app-svg-viewer fxFlex="40" fxHide.xs
                     src="../assets/img/homepage/sprintzerotoapp.svg"
-                    scaleToContainer="true">
+                    [scaleToContainer]=true>
     </app-svg-viewer>
 
     <div class="docs-homepage-promo-desc" fxFlex="60">
@@ -40,7 +43,7 @@
   <div fxLayout="row-reverse" fxLayout.xs="column">
     <app-svg-viewer fxFlex="40" fxHide.xs
                     src="../assets/img/homepage/fastandconsistent.svg"
-                    scaleToContainer="true">
+                    [scaleToContainer]=true>
     </app-svg-viewer>
 
     <div fxFlex="60">
@@ -76,7 +79,7 @@
   <div class="docs-homepage-promo-img">
     <app-svg-viewer
       src="../assets/img/homepage/optimized.svg"
-      scaleToContainer="true"></app-svg-viewer>
+      [scaleToContainer]=true></app-svg-viewer>
   </div>
   <div class="docs-homepage-promo-desc">
     <h2>Optimized for Angular</h2>
