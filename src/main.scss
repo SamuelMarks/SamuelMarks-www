@@ -1,29 +1,30 @@
-@import '~@angular/material/theming';
-@import './app-theme';
-@import './styles/api';
-@import './styles/markdown';
-@import './styles/tables';
-@import './styles/general';
-
-// Include material core styles.
-@include mat-core();
+@use '~@angular/material' as mat;
+@use './app-theme';
+@use './styles/api';
+@use './styles/markdown';
+@use './styles/tables';
+@use './styles/general';
 
 // Define the light theme.
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
+$primary: mat.define-palette(mat.$indigo-palette);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-$theme: mat-light-theme($primary, $accent);
-@include angular-material-theme($theme);
-@include app-root-theme($theme);
+$theme: mat.define-light-theme($primary, $accent);
+
+// Include material core styles.
+@include mat.core();
+
+@include mat.all-component-themes($theme);
+@include app-theme.theme($theme);
 
 .light-colors {
-  background-color: mat-color($primary, default);
-  color: map-get($mat-light-theme-background, background);
+  background-color: mat.get-color-from-palette(mat.$light-theme-foreground-palette, default);
+  color: map-get(mat.$light-theme-background-palette, background);
 }
 
 .dark-colors {
-  background-color: map-get($mat-dark-theme-foreground, base);
-  color: map-get($mat-dark-theme-background, background);
+  background-color: mat.get-color-from-palette(mat.$dark-theme-foreground-palette, base);
+  color: mat.get-color-from-palette(mat.$dark-theme-background-palette, background);
 }
 
 .docs-markdown-code {

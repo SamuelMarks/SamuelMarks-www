@@ -1,40 +1,42 @@
-@import '../node_modules/@angular/material/theming';
-@import './styles/api-theme';
-@import './styles/markdown-theme';
-@import './styles/svg-theme';
-@import './styles/tables-theme';
-@import './app/footer/footer-theme';
-@import './app/slash/slash-theme';
+@use '~@angular/material' as mat;
+
+@use 'sass:map';
+
+@use './styles/api-theme';
+@use './styles/markdown-theme';
+@use './styles/svg-theme';
+@use './styles/tables-theme';
+@use './app/footer/footer-theme';
+@use './app/slash/slash-theme';
 
 // Styles for the docs app that are based on the current theme.
-@mixin app-root-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+@mixin theme($theme) {
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
 
   .docs-app-background {
-    background: mat-color($background, background);
+    background: mat.get-color-from-palette($background, background);
   }
 
   .docs-primary-header {
-    background: mat-color($primary);
+    background: mat.get-color-from-palette($primary);
 
     h1 {
-      color: mat-color($primary, default-contrast);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
   }
 
   .docs-footer {
-    background: mat-color($primary);
-    color: mat-color($primary, default-contrast);
+    background: mat.get-color-from-palette($primary);
+    color: mat.get-color-from-palette($primary, default-contrast);
   }
 
-  @include docs-site-api-theme($theme);
+  /*@include docs-site-api-theme($theme);
   @include docs-site-markdown-theme($theme);
   @include docs-site-svg-theme($theme);
   @include docs-site-tables-theme($theme);
-  @include home-page-theme($theme);
-  @include footer-theme($theme);
+  @include footer-theme($theme);*/
 }

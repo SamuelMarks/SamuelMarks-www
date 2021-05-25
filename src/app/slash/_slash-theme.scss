@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
+
 @mixin home-page-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -7,15 +10,15 @@
 
   app-slash {
     .docs-header-background {
-      background: mat-color($primary);
+      background: mat.get-color-from-palette($primary);
     }
 
     .docs-header-headline {
-      color: mat-color($primary, default-contrast);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
 
     .docs-header-start {
-      color: mat-color($primary);
+      color: mat.get-color-from-palette($primary);
     }
 
     svg {
