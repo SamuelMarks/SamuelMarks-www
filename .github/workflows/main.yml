@@ -31,4 +31,4 @@ jobs:
           git config --global user.name "$author"
           email="${email_author#*<}"; email="${email::-1}"
           git config --global user.email "$email"
-          ng deploy --no-silent samuelmarks-github-io --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --name="$author" --email="$email" --message="$MSG" --no-silent
+          ng deploy --no-silent --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --name="$author" --email="$email" --message="$MSG" --no-silent
