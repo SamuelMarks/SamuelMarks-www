@@ -22,13 +22,14 @@ jobs:
         run: |
           npm i -g npm
           npm i -g @angular/cli typescript angular-cli-ghpages
+          ng add --skip-confirmation angular-cli-ghpages
           npm ci
-          ng add angular-cli-ghpages
-          # cp README.md dist/samuelmarks-github-io
+          ng build --configuration production
+          cp README.md dist/samuelmarks-github-io
           MSG="$(git show -s --format='%s' "$GITHUB_SHA")"
           email_author="$(git log -1 --pretty=format:'%an <%ce>')"
           author="${email_author% *}"
           git config --global user.name "$author"
           email="${email_author#*<}"; email="${email::-1}"
           git config --global user.email "$email"
-          ng deploy --no-silent --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --name="$author" --email="$email" --message="$MSG" --no-silent
+          ng deploy samuelmarks-github-io --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --name="$name" --email="$email" --no-silent
