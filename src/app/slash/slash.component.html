@@ -4,8 +4,8 @@
       <h1 class="mat-h1">Samuel Marks</h1>
       <h2>Scaling engineering is difficult. It shouldn't be. My mission is to create open-source technology, to scale
         from one engineer and one user, to 100s of engineering teams and millions of users.</h2>
-        <!-- deployments is basically a lot of boilerplate. Production deployments majorly diverge from development.
-             These are the problems I'm targeting</h2> -->
+      <!-- deployments is basically a lot of boilerplate. Production deployments majorly diverge from development.
+           These are the problems I'm targeting</h2> -->
     </div>
     <div class="docs-header-start">
       <a mat-raised-button class="docs-button" routerLink="/docs/getting-started" color="accent"
@@ -20,7 +20,205 @@
   </div>
 </header>
 
+
 <div class="main">
+  <div fxLayout="column">
+    <p>I write open-source developer tools to speedup engineering of
+      scalable software. Foci on: cross-platform, multi-ML, multicloud, and
+      compilers to translate across codebases.</p>
+    <figure>
+      <img
+        src="https://github-readme-streak-stats.herokuapp.com/?user=SamuelMarks"
+        alt="SamuelMarks"/>
+      <figcaption aria-hidden="true"><a href="https://github.com/SamuelMarks" target="_blank">SamuelMarks@GitHub</a>
+      </figcaption>
+    </figure>
+    <h3 id="deploy-at-any-scale">Deploy at any scale</h3>
+    <p><em>From one [e.g., embedded] device to 10,000 servers:</em> - [old]
+      59+ Python repos with <a
+        href="https://github.com/offscale?q=off&amp;language=python">“off”
+        prefix</a>; - [new] C89 repo to create custom [very] cross-platform
+      package managers: <a
+        href="https://github.com/offscale/libacquire">libacquire</a>; - [new] <a
+        href="https://github.com/offscale?q=version_&amp;language=c">“version_”
+        prefix</a> C89 repos that use libacquire to create <a
+        href="https://rvm.io">rvm</a>/<a
+        href="https://github.com/nvm-sh/nvm">nvm</a> style cross-platform
+      package managers.</p>
+    <table>
+      <thead>
+      <tr class="table-header">
+        <th>Purpose</th>
+        <th>Repo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+        <td>Provision nodes specified in JSON, across 50+ clouds</td>
+        <td><a
+          href="https://github.com/offscale/offstrategy">offstrategy</a></td>
+      </tr>
+      <tr class="even">
+        <td>SSH into node provisioned by offstrategy|offset</td>
+        <td><a href="https://github.com/offscale/offshell">offshell</a></td>
+      </tr>
+      <tr class="odd">
+        <td>Deprovision node provisioned by offstrategy|offset from cloud
+          providers
+        </td>
+        <td><a href="https://github.com/offscale/offswitch">offswitch</a></td>
+      </tr>
+      <tr class="even">
+        <td>Bring Your Own Node (BYON) [so can use ↕]</td>
+        <td><a href="https://github.com/offscale/offset">offset</a></td>
+      </tr>
+      <tr class="odd">
+        <td>Deploy any of <a
+          href="https://github.com/orgs/offscale/repositories?q=offregister-&amp;language=python">50
+          “offregister-” prefixed</a> softwares—including clustered databases—to
+          nodes provisioned by offstrategy|offset
+        </td>
+        <td><a
+          href="https://github.com/offscale/offregister">offregister</a></td>
+      </tr>
+      </tbody>
+    </table>
+    <h4 id="competitive-advantage">Competitive advantage</h4>
+    <ul>
+      <li>Support for more cloud vendors;</li>
+      <li>Uses normal Python packages deployable to PyPi, as opposed to
+        Puppet/Chef/Ansible with their custom systems;
+      </li>
+      <li>[WiP] Deploy to any operating system (cross-platform: SunOS,
+        Windows, Linux, macOS, OpenBSD);
+      </li>
+      <li>[WiP] Experiment with different versions of each package, including
+        clustered variants.
+      </li>
+    </ul>
+    <h3 id="multicloud">Multicloud</h3>
+    <p><em>From one cloud vendor to many:</em> - [old] See aforementioned <a
+      href="https://libcloud.apache.org">Apache Libcloud</a> and <a
+      href="https://fabfile.org">Fabric</a> utilising Python repos; - [new]
+      C89 <a
+        href="https://github.com/offscale/google-cloud-c">google-cloud-c</a>
+      library (soon: auto-generate entire library, and other vendors); -
+      [planned] autogenerate vendors other than Google Cloud.</p>
+    <h4 id="competitive-advantage-1">Competitive advantage</h4>
+    <ul>
+      <li>[C89] Can be called from most any programming language and runs in
+        all environments;
+      </li>
+      <li>[planned] Build specific abstractions for multicloud, like:
+        container-as-a-Service; ML-as-a-Service; Storage-as-a-Service;
+        &amp;etc.
+      </li>
+    </ul>
+    <h3 id="multi-ml">Multi-ML</h3>
+    <p><em>From one machine-learning framework to many:</em> - [old] Python
+      repo from my first PhD: <a
+        href="https://github.com/SamuelMarks/ml-glaucoma">ml-glaucoma</a>; -
+      [new] 10+ Python repos with <a
+        href="https://github.com/SamuelMarks?tab=repositories&amp;q=ml-params&amp;language=python">“ml-params”
+        prefix</a>:</p>
+    <table>
+      <thead>
+      <tr class="table-header">
+        <th>Google</th>
+        <th>Other vendors</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-tensorflow">tensorflow</a></td>
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-pytorch">pytorch</a></td>
+      </tr>
+      <tr class="even">
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-keras">keras</a></td>
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-skorch">skorch</a></td>
+      </tr>
+      <tr class="odd">
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-flax">flax</a></td>
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-sklearn">sklearn</a></td>
+      </tr>
+      <tr class="even">
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-trax">trax</a></td>
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-xgboost">xgboost</a></td>
+      </tr>
+      <tr class="odd">
+        <td><a href="https://github.com/SamuelMarks/ml-params-jax">jax</a></td>
+        <td><a
+          href="https://github.com/SamuelMarks/ml-params-cntk">cntk</a></td>
+      </tr>
+      </tbody>
+    </table>
+    <h4 id="competitive-advantage-2">Competitive advantage</h4>
+    <ul>
+      <li>Keep up-to-date with latest innovations without porting to favourite
+        framework;
+      </li>
+      <li>Experiment with every model on all major Python ML frameworks.</li>
+    </ul>
+    <h3 id="native-development-cross-platform-without-tradeoffs">Native
+      development, cross-platform, without tradeoffs</h3>
+    <p>Compilers to automatically translate—within and—between:</p>
+    <table>
+      <thead>
+      <tr class="table-header">
+        <th>Language</th>
+        <th>Compiler</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+        <td>Python</td>
+        <td><a href="https://github.com/offscale/cdd-python">cdd-python</a></td>
+      </tr>
+      <tr class="even">
+        <td>C</td>
+        <td><a href="https://github.com/SamuelMarks/cdd-c">cdd-c</a></td>
+      </tr>
+      <tr class="odd">
+        <td>Kotlin (Android)</td>
+        <td><a href="https://github.com/offscale/cdd-kotlin">cdd-kotlin</a></td>
+      </tr>
+      <tr class="even">
+        <td>Swift (iOS)</td>
+        <td><a
+          href="https://github.com/offscale/cdd-swift-ios">cdd-swift</a></td>
+      </tr>
+      <tr class="odd">
+        <td>TypeScript (Angular)</td>
+        <td><a href="https://github.com/offscale/cdd-ts-ng">cdd-ts-ng</a></td>
+      </tr>
+      <tr class="even">
+        <td>Rust</td>
+        <td><a href="https://github.com/offscale/cdd-rust">cdd-rust</a></td>
+      </tr>
+      </tbody>
+    </table>
+    <h4 id="competitive-advantage-3">Competitive advantage</h4>
+    <ul>
+      <li>[intra-language] Automatically synchronise tests (&amp; mocks),
+        docs, types &amp; interfaces;
+      </li>
+      <li>[exolanguage] Translate changes across language boundaries;</li>
+      <li>Develop multi-language applications—e.g., Android, iOS, web,
+        backend—as fast as single-language applications (compare with: Django or
+        Ruby on Rails) and at a higher quality thanks to increased consistency,
+        test coverage and doc coverage.
+      </li>
+    </ul>
+  </div>
+
   <div fxLayout="row" fxLayout.xs="column">
     <app-svg-viewer fxFlex="40" fxHide.xs
                     src="../assets/img/homepage/sprintzerotoapp.svg"
