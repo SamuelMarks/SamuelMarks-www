@@ -22,7 +22,7 @@
 
 
 <div class="main">
-  <div fxLayout="column" class="markdown-body">
+  <div class="markdown-body fxLayout-column">
     <p>I write open-source developer tools to speedup engineering of
       scalable software. Foci on: cross-platform, multi-ML, multicloud, and
       compilers to translate across codebases.</p>
@@ -218,73 +218,7 @@
       </li>
     </ul>
   </div>
-
-  <div fxLayout="row" fxLayout.xs="column">
-    <app-svg-viewer fxFlex="40" fxHide.xs
-                    src="../assets/img/homepage/sprintzerotoapp.svg"
-                    [scaleToContainer]=true>
-    </app-svg-viewer>
-
-    <div class="docs-homepage-promo-desc" fxFlex="60">
-      <h2><a class="docs-markdown-a" href="https://github.com/SamuelMarks">Starter scaffolds</a></h2>
-      <ul>
-        <li><a class="docs-markdown-a" href="https://github.com/SamuelMarks/restify-orm-scaffold">Node.JS (multi-ORM;
-          multi-server [restify et al.])</a></li>
-        <li><a class="docs-markdown-a" href="https://github.com/SamuelMarks/ng-material-scaffold">Web (Angular 5 with
-          @angular/material and @angular/flex-layout)</a></li>
-        <li><a class="docs-markdown-a" href="https://github.com/SamuelMarks/android-auth-scaffold">Android (with
-          okhttp)</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div fxLayout="row-reverse" fxLayout.xs="column">
-    <app-svg-viewer fxFlex="40" fxHide.xs
-                    src="../assets/img/homepage/fastandconsistent.svg"
-                    [scaleToContainer]=true>
-    </app-svg-viewer>
-
-    <div fxFlex="60">
-      <h2><a class="docs-markdown-a" href="https://github.com/stereostream">StereoStream</a></h2>
-      <p>WebRTC and WebSockets powered multi-webcam broadcast streaming solution. <a class="docs-markdown-a"
-                                                                                     href="https://github.com/stereostream/stereostream-angular">Web</a>;
-        <a class="docs-markdown-a" href="https://github.com/stereostream/stereostream-android">Android</a>; <a
-          class="docs-markdown-a" href="https://github.com/stereostream/stereostream-rest-api">REST API</a>.</p>
-    </div>
-  </div>
-
-
-  <div fxLayout="row" fxLayout.xs="column">
-    <a href="https://offscale.io" target="_blank" fxFlex="40" fxHide.xs>
-      <img style="width: 100%"
-           src="../assets/img/Offscale-orange.png"/>
-    </a>
-
-    <div class="docs-homepage-promo-desc" fxFlex="60">
-      <h2><a class="docs-markdown-a" href="http://offscale.io" target="_blank">Offscale</a></h2>
-      <ul>
-        <li><a class="docs-markdown-a" href="https://github.com/offscale/offstrategy">CLI to create nodes on any of 50+
-          public and private clouds</a></li>
-        <li><a class="docs-markdown-a" href="https://github.com/offscale/offregister">CLI to deploy onto these nodes;
-          using Fabric, Ansible (with more easily addable)</a></li>
-        <li><a class="docs-markdown-a" href="https://github.com/offscale/offswitch">CLI to destroy nodes</a></li>
-      </ul>
-    </div>
-  </div>
 </div>
-<!--
-<div class="docs-homepage-row docs-homepage-reverse-row">
-  <div class="docs-homepage-promo-img">
-    <app-svg-viewer
-      src="../assets/img/homepage/optimized.svg"
-      [scaleToContainer]=true></app-svg-viewer>
-  </div>
-  <div class="docs-homepage-promo-desc">
-    <h2>Optimized for Angular</h2>
-    <p>Built by the Angular team to integrate seamlessly with Angular.</p>
-  </div>
-</div>
--->
 <div class="docs-homepage-bottom-start">
   <a mat-raised-button class="docs-button" routerLink="/docs/getting-started">Get started</a>
 </div>
