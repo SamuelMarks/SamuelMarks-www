@@ -1,15 +1,14 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import {Platform, PlatformPickerService} from './platform-picker.service';
+import { Platform, PlatformPickerService } from './platform-picker.service';
 
 @Component({
   selector: 'app-platform-picker',
   templateUrl: './platform-picker.component.html',
   styleUrls: ['./platform-picker.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class PlatformPickerComponent implements OnInit {
-  platformSelectd!: string;
+  platformSelectd!: Platform;
   platforms: Platform[];
 
   constructor(public platformPickerService: PlatformPickerService) {
@@ -17,7 +16,7 @@ export class PlatformPickerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.platformSelectd = this.platformPickerService.getPlatform();
+    this.platformSelectd = this.platformPickerService.getPlatform()!;
   }
 
   updateService(event: { value?: Platform }): void {

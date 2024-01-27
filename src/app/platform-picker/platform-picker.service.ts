@@ -7,7 +7,7 @@ export class PlatformPickerService {
   public static platforms: Platform[] = [
     'macOS', 'Linux', 'Windows'
   ];
-  private platform: string = PlatformPickerService.platforms[1];
+  private platform: Platform | undefined;
 
   constructor() {
     const platForm = localStorage.getItem('platform');
@@ -16,8 +16,8 @@ export class PlatformPickerService {
   }
 
   // public get platform(): string {
-  public getPlatform(): string {
-    const platForm = localStorage.getItem('platform');
+  public getPlatform(): Platform | undefined {
+    const platForm = localStorage.getItem('platform') as Platform;
     return platForm == null ? this.platform : platForm;
   }
 

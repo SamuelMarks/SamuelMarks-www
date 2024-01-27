@@ -7,10 +7,10 @@
      [routerLink]="key">{{sections[key]}}</a>
   <a mat-button class="docs-navbar-hide-small docs-button" routerLink="guides">Guides</a>
   -->
-  <ng-container *ngIf="w.location.pathname.indexOf('docs/getting-started') > -1">
+  @if (w.location.pathname.indexOf('docs/getting-started') > -1) {
     <div class="flex-spacer"></div>
     <app-platform-picker></app-platform-picker>
-  </ng-container>
+  }
 
   <div class="flex-spacer"></div>
   <a mat-icon-button class="docs-button"
