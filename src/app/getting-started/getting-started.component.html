@@ -136,7 +136,7 @@
     createuser --superuser "$POSTGRES_DB_USER"
     psql -c "CREATE USER $POSTGRES_DB_USER WITH LOGIN PASSWORD '$REST_PASS';"
     createdb "$POSTGRES_DB_NAME" --owner "$POSTGRES_DB_USER"
-    export RDBMS_URI="postgres://$POSTGRES_DB_USER:$REST_PASS@localhost/$POSTGRES_DB_NAME"
+    export RDBMS_URI="postgres://$POSTGRES_DB_USER:$REST_PASS&#64;localhost/$POSTGRES_DB_NAME"
     # ^Recommend adding this `export` line to your ~/.bash_profile
   </code></pre>
   <pre class="docs-markdown-pre" *ngIf="os('Windows')"><code class="lang-batch docs-markdown-code">
@@ -148,7 +148,7 @@
     psql -c "CREATE USER %POSTGRES_DB_USER% WITH LOGIN PASSWORD '%REST_PASS%';"
     createdb "%POSTGRES_DB_NAME%" --owner "%POSTGRES_DB_USER%"
 
-    setx RDBMS_URI "postgres://%POSTGRES_DB_USER%:%REST_PASS%@localhost/%POSTGRES_DB_NAME%"
+    setx RDBMS_URI "postgres://%POSTGRES_DB_USER%:%REST_PASS%&#64;localhost/%POSTGRES_DB_NAME%"
     :: This last line will add RDBMS_URI to your environment
   </code></pre>
   <p *ngIf="os('Linux') || os('macOS')">
@@ -179,7 +179,7 @@
   </h3>
 
   <pre class="docs-markdown-pre"><code class="lang-bash docs-markdown-code">
-    npm i -g bunyan typings typescript @angular/cli
+    npm i -g bunyan typings typescript &#64;angular/cli
   </code></pre>
 
   <h3 id="step-6-development-backend"
