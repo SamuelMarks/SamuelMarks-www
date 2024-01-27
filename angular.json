@@ -38,7 +38,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "714kb",
+                  "maximumWarning": "828kb",
                   "maximumError": "1mb"
                 },
                 {
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "samuelmarks-github-io:build:production"
+              "buildTarget": "samuelmarks-github-io:build:production"
             },
             "development": {
-              "browserTarget": "samuelmarks-github-io:build:development"
+              "buildTarget": "samuelmarks-github-io:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "samuelmarks-github-io:build"
+            "buildTarget": "samuelmarks-github-io:build"
           }
         },
         "test": {

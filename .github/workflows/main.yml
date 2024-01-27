@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Use Node.js LTS
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
@@ -24,12 +24,12 @@ jobs:
           npm i -g @angular/cli typescript angular-cli-ghpages
           ng add --skip-confirmation angular-cli-ghpages
           npm ci
-          ng build --configuration production
-          cp README.md dist/samuelmarks-github-io
           MSG="$(git show -s --format='%s' "$GITHUB_SHA")"
           email_author="$(git log -1 --pretty=format:'%an <%ce>')"
           author="${email_author% *}"
           git config --global user.name "$author"
           email="${email_author#*<}"; email="${email::-1}"
           git config --global user.email "$email"
-          ng deploy samuelmarks-github-io --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --name="$name" --email="$email" --no-silent
+          ng build --configuration production
+          head -n5 README.md > 'dist/samuelmarks-github-io/README.md'
+          npx angular-cli-ghpages --dir='dist/samuelmarks-github-io' --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --name="$name" --email="$email" --no-silent
