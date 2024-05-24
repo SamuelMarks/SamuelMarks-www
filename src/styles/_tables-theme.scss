@@ -13,16 +13,16 @@
 
   .docs-api table,
   .docs-markdown-table {
-    color: mat.get-color-from-palette($foreground, text);
+    color: mat.m2-get-color-from-palette($foreground, text);
   }
 
   .docs-api th,
   .docs-markdown-th {
-    background: mat.get-color-from-palette($background, app-bar);
+    background: mat.m2-get-color-from-palette($background, app-bar);
   }
 
   .docs-api td,
   .docs-markdown-td {
-    border: 1px solid rgba(mat.get-color-from-palette($foreground, secondary-text), $tableBorderOpacity);
+    border: 1px solid rgba(mat.m2-get-color-from-palette($foreground, secondary-text), $tableBorderOpacity);
   }
 }

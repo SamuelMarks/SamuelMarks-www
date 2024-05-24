@@ -10,7 +10,7 @@
 
   app-footer {
     .docs-footer-links a {
-      color: mat.get-color-from-palette($primary, default-contrast);
+      color: mat.m2-get-color-from-palette($primary, default-contrast);
     }
   }
 }

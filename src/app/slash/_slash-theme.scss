@@ -10,15 +10,15 @@
 
   app-slash {
     .docs-header-background {
-      background: mat.get-color-from-palette($primary);
+      background: mat.m2-get-color-from-palette($primary);
     }
 
     .docs-header-headline {
-      color: mat.get-color-from-palette($primary, default-contrast);
+      color: mat.m2-get-color-from-palette($primary, default-contrast);
     }
 
     .docs-header-start {
-      color: mat.get-color-from-palette($primary);
+      color: mat.m2-get-color-from-palette($primary);
     }
 
     svg {

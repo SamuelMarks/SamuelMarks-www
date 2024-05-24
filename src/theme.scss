@@ -6,9 +6,9 @@
 @use './styles/general';
 
 // Define the light theme.
-$_primary: mat.define-palette(mat.$blue-gray-palette);
-$_accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
-$_theme: mat.define-light-theme($_primary, $_accent);
+$_primary: mat.m2-define-palette(mat.$m2-blue-gray-palette);
+$_accent: mat.m2-define-palette(mat.$m2-amber-palette, A200, A100, A400);
+$_theme: mat.m2-define-light-theme($_primary, $_accent);
 
 // Include material core styles.
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
@@ -31,11 +31,11 @@ a {
 }
 
 .m2app-dark {
-  $dark-primary: mat.define-palette($mat-pink, 700, 500, 900);
-  $dark-accent: mat.define-palette($mat-blue-grey, A200, A100, A400);
-  $dark-warn: mat.define-palette($mat-deep-orange);
+  $dark-primary: mat.m2-define-palette($mat-pink, 700, 500, 900);
+  $dark-accent: mat.m2-define-palette($mat-blue-grey, A200, A100, A400);
+  $dark-warn: mat.m2-define-palette($mat-deep-orange);
 
-  $dark-theme: mat.define-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  $dark-theme: mat.m2-define-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
   @include app-theme.theme($dark-theme);
 }
