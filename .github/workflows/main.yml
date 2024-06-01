@@ -35,7 +35,7 @@ jobs:
           git config --global user.name "$author"
           email="${email_author#*<}"; email="${email::-1}"
           git config --global user.email "$email"
-          ng build --configuration production --base-href 'https://'"$CNAME"
+          ng build --configuration production # --base-href 'https://'"$CNAME"
           head -n5 README.md > "$DIST"'/README.md'
           mv "$DIST"'/browser'/* "$DIST"
           npx angular-cli-ghpages --dir="$DIST" --repo='https://'"$GITHUB_TOKEN"'@github.com/'"$TARGET" --branch='master' --message="$MSG" --name="$name" --email="$email" --no-silent
