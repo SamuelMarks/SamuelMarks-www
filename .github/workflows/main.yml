@@ -1,6 +1,9 @@
 name: GitHub Pages
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build-and-deploy:
@@ -19,6 +22,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          DIST: 'dist/samuelmarks-github-io'
+          TARGET: 'SamuelMarks/SamuelMarks.github.io'
         run: |
           npm i -g npm
           npm i -g @angular/cli typescript angular-cli-ghpages
@@ -30,6 +35,8 @@ jobs:
           git config --global user.name "$author"
           email="${email_author#*<}"; email="${email::-1}"
           git config --global user.email "$email"
-          ng build --configuration production
-          head -n5 README.md > 'dist/samuelmarks-github-io/README.md'
-          npx angular-cli-ghpages --dir='dist/samuelmarks-github-io' --repo='https://'"$GITHUB_TOKEN"'@github.com/SamuelMarks/SamuelMarks.github.io' --branch='master' --message="$MSG" --name="$name" --email="$email" --no-silent
+          ng build --configuration production --base-href 'https://'"$CNAME"
+          head -n5 README.md > "$DIST"'/README.md'
+          mv "$DIST"'/browser'/* "$DIST"
+          npx angular-cli-ghpages --dir="$DIST" --repo='https://'"$GITHUB_TOKEN"'@github.com/'"$TARGET" --branch='master' --message="$MSG" --name="$name" --email="$email" --no-silent
+
