@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {SlashComponent} from './slash.component';
+import { SlashComponent } from './slash.component';
 
 describe('SlashComponent', () => {
   let component: SlashComponent;
@@ -8,9 +8,9 @@ describe('SlashComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SlashComponent ]
+      declarations: [SlashComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

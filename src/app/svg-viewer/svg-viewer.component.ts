@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-svg-viewer',
@@ -9,7 +9,8 @@ export class SvgViewerComponent implements OnInit {
   @Input() src!: string;
   @Input() scaleToContainer!: boolean;
 
-  constructor(private elementRef: ElementRef, private http: HttpClient) { }
+  constructor(private elementRef: ElementRef, private http: HttpClient) {
+  }
 
   ngOnInit(): void {
     this.fetchAndInlineSvgContent(this.src);
@@ -28,7 +29,7 @@ export class SvgViewerComponent implements OnInit {
 
   private fetchAndInlineSvgContent(path: string): void {
     const svgAbsPath = path.slice(path.indexOf('assets/') - 1);
-    this.http.get(svgAbsPath, {responseType: 'text'}).subscribe(svgResponse => {
+    this.http.get(svgAbsPath, { responseType: 'text' }).subscribe(svgResponse => {
       this.inlineSvgContent(svgResponse);
     });
   }

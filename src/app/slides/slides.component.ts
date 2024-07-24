@@ -11,7 +11,7 @@ export class SlidesComponent implements OnInit {
   noKeyBindSlides?: number[];
 
   // tslint:disable-next-line:variable-name
-  _totalSlides: number = 0;
+  _totalSlides: number = 23;
 
   get totalSlides(): number {
     return this._totalSlides;

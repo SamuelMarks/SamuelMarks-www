@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {SvgViewerComponent} from './svg-viewer.component';
+import { SvgViewerComponent } from './svg-viewer.component';
 
 describe('SvgViewerComponent', () => {
   let component: SvgViewerComponent;
@@ -8,9 +8,9 @@ describe('SvgViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SvgViewerComponent ]
+      declarations: [SvgViewerComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

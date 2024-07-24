@@ -1,0 +1,42 @@
+:host {
+  background-color: black;
+  background-image: radial-gradient(
+      rgba(0, 150, 0, 0.75), black 120%
+  );
+  margin: 0;
+  overflow: hidden;
+  padding: 2rem;
+  color: white;
+  width: 100%;
+  font: 1.3rem Inconsolata, monospace;
+  text-shadow: 0 0 5px #C8C8C8;
+  &::after {
+    width: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(black, 0.15),
+        rgba(black, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+  }
+}
+::selection {
+  background: #0080FF;
+  text-shadow: none;
+}
+pre {
+  margin: 0;
+}
+blockquote[title][cite]:after {
+  content:attr(title)"\a"attr(cite)
+}
+code {
+//  width: 100%;
+  //display: block;
+}

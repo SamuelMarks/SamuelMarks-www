@@ -1,0 +1,48 @@
+* {
+  // font-size: 300%;
+}
+
+div {
+  padding: 20px;
+}
+
+ul.div {
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.slide {
+  font-size: 300%;
+}
+
+.scroller {
+  max-width: 90%;
+  max-height: 70%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.code-bg {
+  background: #282c34;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-image: none;
+  background-size: auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+}
+
+.trans-button {
+  background: transparent;
+  border: none;
+}
+
+.pad-slide {
+  margin: 2% auto 0 auto;
+}
