@@ -37,3 +37,8 @@ $samuelmarks-github-io-theme: mat.m2-define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+is-active {
+  background: darkblue !important;
+  outline-color: whitesmoke;
+}

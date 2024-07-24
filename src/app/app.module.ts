@@ -10,11 +10,10 @@ import { PlatformPickerService } from './platform-picker/platform-picker.service
 import { SlashModule } from './slash/slash.module';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
+import { SlidesComponent } from "./slides/slides.component";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, SlidesComponent],
   imports: [
     BrowserModule, BrowserAnimationsModule, RouterModule, RouterModule.forRoot(appRoutes, {}),
     MaterialImportModule,

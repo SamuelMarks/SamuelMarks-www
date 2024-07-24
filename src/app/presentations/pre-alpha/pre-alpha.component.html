@@ -1,0 +1,304 @@
+<app-navbar></app-navbar>
+
+<ng-container [ngSwitch]="currentSlide">
+  <div *ngSwitchCase="0" class="slide">
+    <h3>Pre-alpha presentation</h3>
+    <p>Samuel Marks, for Offscale.io</p>
+  </div>
+
+  <img *ngSwitchCase="1" src="../../../assets/cdd-diagram.png" alt="CDD diagram"/>
+
+  <ng-container *ngFor="let name of ['iOS: Swift', 'Android: Java', 'Android: Kotlin', 'web: TypeScript']; index as i">
+    <div *ngSwitchCase="i+2" class="slide">
+      <h3>{{name}}</h3>
+      <ul ngStyle.lt-lg="column-count: 1" ngStyle.gt-sm="column-count: 3">
+        <li>API client</li>
+        <li>Models</li>
+        <li>Validation</li>
+        <li>Views</li>
+        <li>Docs</li>
+        <li>Tests</li>
+        <li>Mocks</li>
+      </ul>
+    </div>
+  </ng-container>
+
+  <div *ngSwitchCase="6" class="slide">
+    <h3>REST API</h3>
+    <ul ngStyle.lt-lg="column-count: 1" ngStyle.gt-sm="column-count: 3">
+      <li>API server</li>
+      <li>Models</li>
+      <li>Validation</li>
+      <li>Docs</li>
+      <li>Tests</li>
+      <li>Mocks</li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="7" class="slide">
+    <h3>Duplication in 4 or 5 languages</h3>
+    <p>Maintaining this orthogonality is straightforward&hellip; albeit error prone.</p>
+  </div>
+
+  <ng-template #solution0>
+    <h3>Solution 0</h3>
+    <p>Write in one language and framework.</p>
+  </ng-template>
+
+  <div *ngSwitchCase="8" class="slide">
+    <ng-container *ngTemplateOutlet="solution0"></ng-container>
+    <p>Examples: older PHP frameworks, Rails, Django.</p>
+    <div fxLayout="row">
+      <a routerLink="." fragment="9" fxFlex>Advantages</a>
+      <a routerLink="." fragment="10" fxFlex>Disadvantages</a>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="9" class="slide">
+    <ng-container *ngTemplateOutlet="solution0"></ng-container>
+    <h4>Advantages</h4>
+    <ul>
+      <li>One codebase (very DRY)</li>
+      <li>One language (or at least, language injection into HTML templates)</li>
+      <li>Testing of backend and frontend can be done once, and without mocks</li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="10" class="slide">
+    <ng-container *ngTemplateOutlet="solution0"></ng-container>
+    <h4>Disadvantages</h4>
+    <ul>
+      <li>Templates cannot generally be deployed onto the CDN</li>
+      <li>Offline mode is generally not available</li>
+      <li>Scalability is negatively affected</li>
+    </ul>
+  </div>
+
+  <ng-template #solution1>
+    <h3>Solution 1</h3>
+    <p>Two codebases (frontend, backend), but one <em>lingua-franca</em> language.</p>
+  </ng-template>
+
+  <div *ngSwitchCase="11" class="slide">
+    <ng-container *ngTemplateOutlet="solution1"></ng-container>
+    <p>Examples:</p>
+
+    <ul ngStyle.lt-lg="column-count: 1" ngStyle.gt-sm="column-count: 3">
+      <li>C#: Xamarin with ASP.NET Web API;</li>
+      <li>Dart: Flutter and <code>dart::io</code>;</li>
+      <li>Java: Google Web Toolkit (GWT) and Spring</li>
+      <li>PHP: PHP templates and Laravel</li>
+      <li>JavaScript (and/or compile-to-JavaScript): [frameworks: Angular, React, Vue] HTML and Node.js</li>
+    </ul>
+    <div fxLayout="row">
+      <a routerLink="." fragment="12" fxFlex>Advantages</a>
+      <a routerLink="." fragment="13" fxFlex>Disadvantages</a>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="12" class="slide">
+    <ng-container *ngTemplateOutlet="solution1"></ng-container>
+    <h4>Advantages</h4>
+    <ul>
+      <li>One language, so can share knowledge, libraries, and developer tooling</li>
+      <li>Testing can [sometimes] be done without mocks</li>
+      <li>Removes quirks around language differences, e.g., regular expressions</li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="13" class="slide">
+    <ng-container *ngTemplateOutlet="solution1"></ng-container>
+    <h4>Disadvantages</h4>
+    <ul style="margin-bottom: 0">
+      <li>Non-standard (not using vendor-recommended approach)</li>
+      <li>Debugging is more difficult<sup>&dagger;</sup></li>
+      <li>Offline mode and performance are impacted<sup>&dagger;</sup>
+        with performance impact for web-native languages when packages as native app
+      </li>
+    </ul>
+    <p style="margin-top: 0"><sup>&dagger;</sup> <em>for non web-native languages</em></p>
+  </div>
+
+  <ng-template #solution2>
+    <h3>Solution 2</h3>
+    <p>Vendor-specific languages for each frontend and decoupled backend, but shared library for API, models, and
+      validation.</p>
+  </ng-template>
+
+
+  <div *ngSwitchCase="14" class="slide">
+    <ng-container *ngTemplateOutlet="solution2"></ng-container>
+    <p>Examples:</p>
+
+    <ul ngStyle.lt-lg="column-count: 1" ngStyle.gt-sm="column-count: 3">
+      <li>Protocol Buffers and FlatBuffers from Google;</li>
+      <li>Cap’n Proto;</li>
+      <li>Thrift and Arvo from Apache;</li>
+      <li>WSDL and SOAP standard complying implementations (Microsoft &amp; others)</li>
+      <li>FFI</li>
+    </ul>
+    <div fxLayout="row">
+      <a routerLink="." fragment="16" fxFlex>Advantages</a>
+      <a routerLink="." fragment="17" fxFlex>Disadvantages</a>
+    </div>
+  </div>
+
+  <a *ngSwitchCase="15" href="https://xkcd.com/927/" target="_blank">
+    <img src="//imgs.xkcd.com/comics/standards.png" style="width: 50%"
+         [title]="'Fortunately, the charging one has been solved now that we\'ve all ' +
+         'standardized on mini-USB. Or is it micro-USB? Shit.'" alt="Standards">
+  </a>
+
+  <div *ngSwitchCase="16" class="slide">
+    <ng-container *ngTemplateOutlet="solution2"></ng-container>
+    <h4>Advantages</h4>
+    <ul>
+      <li>Single source of truth (SSOT)</li>
+      <li>Dynamism (can be setup so that when SSOT changes, all frontends and backends change)</li>
+      <li>Compression, pipelining and other efficiency gains</li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="17" class="slide">
+    <ng-container *ngTemplateOutlet="solution2"></ng-container>
+    <h4>Disadvantages</h4>
+    <ul>
+      <li>Non-standard, non-vendor recommended (or each vendor recommends a different one)&hellip; impacting team
+        training also
+      </li>
+      <li>Difficult to debug</li>
+      <li>Difficult to test</li>
+    </ul>
+  </div>
+
+  <ng-template #solution3>
+    <h3>Solution 3</h3>
+    <p>Vendor-specific languages for each frontend and decoupled backend.</p>
+  </ng-template>
+
+  <div *ngSwitchCase="18" class="slide">
+    <ng-container *ngTemplateOutlet="solution3"></ng-container>
+    <p>Examples:</p>
+
+    <ul ngStyle.lt-lg="column-count: 1" ngStyle.gt-sm="column-count: 3">
+      <li>C++ for desktop;</li>
+      <li>JavaScript for web;</li>
+      <li>Rust for backend;</li>
+      <li>Swift for iOS</li>
+      <li>Java for Android</li>
+    </ul>
+    <div fxLayout="row">
+      <a routerLink="." fragment="16" fxFlex>Advantages</a>
+      <a routerLink="." fragment="17" fxFlex>Disadvantages</a>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="19" class="slide">
+    <ng-container *ngTemplateOutlet="solution3"></ng-container>
+    <h4>Advantages</h4>
+    <ul>
+      <li>Right tool for right job: standard vendor-specific language. E.g., hire any Android dev and they will know how
+        to write the app in Java.
+      </li>
+      <li>Performance</li>
+      <li>Granularity of features, e.g., peripheral devices, offline mode, compression &amp;etc.</li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="20" class="slide">
+    <ng-container *ngTemplateOutlet="solution3"></ng-container>
+    <h4>Disadvantages</h4>
+    <ul>
+      <li>Duplication</li>
+      <li>Time and complexity of maintaining duplication</li>
+      <li>Language and toolchain knowledge requirement and transition effort</li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="21" class="slide">
+    <h1>Compiler Driven Development (CDD)</h1>
+  </div>
+
+  <div *ngSwitchCase="22" class="slide">
+    <h4>What is CDD?</h4>
+    <p>A series of compilers&mdash;and methodology for creating new compilers&mdash;that traverses the Abstract Syntax
+      Tree (AST) of each language, and translates across:</p>
+    <ul ngStyle.lt-lg="column-count: 1" ngStyle.gt-sm="column-count: 3">
+      <li>API client|server</li>
+      <li>models</li>
+      <li>validation</li>
+      <li>docs</li>
+      <li>tests and mocks</li>
+    </ul>
+  </div>
+
+  <ng-template #solution4>
+    <h3>Compiler Driven Development (CDD)</h3>
+    <p>Automated changes for vendor-specific languages for each frontend and decoupled backend.</p>
+  </ng-template>
+
+  <div *ngSwitchCase="23" class="slide">
+    <ng-container *ngTemplateOutlet="solution4"></ng-container>
+    <h4>Advantages</h4>
+    <ul>
+      <li>Conceivable to maintain <strong>100% test coverage</strong></li>
+      <li>Speedup making changes across language boundaries (e.g., adding a property to a model is <strong>36&times;
+        faster</strong>)
+      </li>
+      <li>All the advantages of native development (e.g., see <a routerLink="." fragment="19">slide 19</a>)</li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="24" class="slide">
+    <ng-container *ngTemplateOutlet="solution4"></ng-container>
+    <h4>Disadvantages</h4>
+    <ul>
+      <li>Time to write each compiler</li>
+      <li>Time to develop for each design pattern, paradigm, and directory structure</li>
+      <li>Institutional inertia</li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="25" class="slide">
+    <h3>CDD demo</h3>
+    <code>TODO: Embed web IDE here</code>
+  </div>
+
+  <!--
+  <div *ngSwitchCase="12" class="slide">
+    <ng-container *ngTemplateOutlet="solution1"></ng-container>
+    <h4>Advantages</h4>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <div *ngSwitchCase="13" class="slide">
+    <ng-container *ngTemplateOutlet="solution1"></ng-container>
+    <h4>Disadvantages</h4>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  -->
+</ng-container>
+
+<div fxLayout="row" fxLayoutGap="20px" style="width: 80px; background: transparent; border: none; ">
+  <button fxFlex (click)="prev()" class="trans-button" style="font-size: 20px">
+    &larr;
+  </button>
+
+  <button fxFlex (click)="next()" class="trans-button" style="font-size: 20px">
+    &rarr;
+  </button>
+
+  <button fxFlex (click)="toggleFullScreen()" class="trans-button" style="height: 5px; width: 5px">
+    <app-svg-viewer style="height: 5px; width: 5px"
+                    [src]="isFullScreen()? '/assets/fullscreen-24px.svg' : '/assets/fullscreen_exit-24px.svg'">
+    </app-svg-viewer>
+  </button>
+</div>

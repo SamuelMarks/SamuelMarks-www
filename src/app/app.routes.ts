@@ -8,5 +8,7 @@ export const appRoutes: Routes = [
   {path: 'docs/learn-engineering',
     loadChildren: () => import('src/app/learn-engineering/learn-engineering.module').then(m => m.LearnEngineeringModule)},
   {path: 'research/open-questions',
-    loadChildren: () => import('src/app/open-questions/open-questions.module').then(m => m.OpenQuestionsModule)}
+    loadChildren: () => import('src/app/open-questions/open-questions.module').then(m => m.OpenQuestionsModule)},
+  {path: 'presentations',
+    loadChildren: () => import('src/app/presentations/presentations.module').then(m => m.PresentationsModule)}
 ];
