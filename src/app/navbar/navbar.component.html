@@ -1,15 +1,20 @@
 <mat-toolbar color="primary">
-  <a routerLink="/" class="docs-navbar-hide-vsmall">samuel&#64;offscale.io</a>&emsp;|&ensp;
+  <ul class="nav">
+     <li><a routerLink="/" class="docs-navbar-hide-vsmall">samuel&#64;offscale.io</a></li>
   <!--
   <a mat-button class="docs-navbar-hide-small docs-button"
      *ngFor="let key of sectionKeys"
      [routerLink]="key">{{sections[key]}}</a>
   <a mat-button class="docs-navbar-hide-small docs-button" routerLink="guides">Guides</a>
   -->
-  <a mat-button class="docs-navbar-hide-small docs-button" routerLink="/docs/learn-engineering"
-     routerLinkActive="is-active">Learn engineering</a>
-  &ensp;|&ensp;
-  <a mat-button class="docs-navbar-hide-small docs-button" routerLink="presentations">Presentations</a>
+    <li>
+      <a mat-button class="docs-navbar-hide-small docs-button" routerLink="/docs/learn-engineering"
+         routerLinkActive="is-active">Learn engineering</a>
+    </li>
+    <li>
+      <a mat-button class="docs-navbar-hide-small docs-button" routerLink="presentations">Presentations</a>
+    <li>
+  </ul>
   @if (w.location.pathname.indexOf('docs/getting-started') > -1) {
     <div class="flex-spacer"></div>
     <app-platform-picker></app-platform-picker>
