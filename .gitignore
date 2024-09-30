@@ -44,3 +44,12 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# LaTeX
+*.aux
+*.log
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.pdf
+*.out
