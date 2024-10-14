@@ -18,6 +18,15 @@ jobs:
         with:
           node-version: lts/*
 
+      - name: 'build résumé PDF'
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: 'résumé/Samuel Marks.tex'
+          args: -interaction=nonstopmode -shell-escape
+
+      - name: 'upload résumé PDF'
+        run: gh release upload 'latest' 'Samuel Marks.pdf'
+
       - name: Prepare and deploy
         env:
           GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
@@ -39,4 +48,3 @@ jobs:
           head -n5 README.md > "$DIST"'/README.md'
           mv "$DIST"'/browser'/* "$DIST"
           npx angular-cli-ghpages --dir="$DIST" --repo='https://'"$GITHUB_TOKEN"'@github.com/'"$TARGET" --branch='master' --message="$MSG" --name="$name" --email="$email" --no-silent
-
