@@ -19,9 +19,10 @@ class Range implements Iterable<number> {
 const range = (low: number, high: number): Range => new Range(low, high);
 
 @Component({
-  selector: 'app-2024-07_ml-compilers-package-management',
-  templateUrl: './2024-07_ml-compilers-package-management.component.html',
-  styleUrls: ['./2024-07_ml-compilers-package-management.component.scss']
+    selector: 'app-2024-07_ml-compilers-package-management',
+    templateUrl: './2024-07_ml-compilers-package-management.component.html',
+    styleUrls: ['./2024-07_ml-compilers-package-management.component.scss'],
+    standalone: false
 })
 export class MlCompilersPackageManagementComponent extends SlidesComponent implements AfterContentInit {
   degrees: readonly string[][] = Object.freeze([

@@ -2,9 +2,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-slides',
-  templateUrl: './slides.component.html',
-  styleUrls: ['./slides.component.scss']
+    selector: 'app-slides',
+    templateUrl: './slides.component.html',
+    styleUrls: ['./slides.component.scss'],
+    standalone: false
 })
 export class SlidesComponent implements OnInit {
   currentSlide: number = 1;

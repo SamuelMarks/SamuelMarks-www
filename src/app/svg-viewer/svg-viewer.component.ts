@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-svg-viewer',
-  template: '<div class="docs-svg-viewer" aria-hidden="true"></div>',
+    selector: 'app-svg-viewer',
+    template: '<div class="docs-svg-viewer" aria-hidden="true"></div>',
+    standalone: false
 })
 export class SvgViewerComponent implements OnInit {
   @Input() src!: string;

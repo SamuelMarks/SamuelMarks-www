@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { PlatformPickerService } from '../platform-picker/platform-picker.service';
 
 @Component({
-  selector: 'app-getting-started',
-  templateUrl: './getting-started.component.html',
-  styleUrls: ['./getting-started.component.css']
+    selector: 'app-getting-started',
+    templateUrl: './getting-started.component.html',
+    styleUrls: ['./getting-started.component.css'],
+    standalone: false
 })
 export class GettingStartedComponent {
   // `os` > `is` for readability here; but `is` makes sense within `PlatformPickerService` class

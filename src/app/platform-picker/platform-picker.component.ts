@@ -3,9 +3,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Platform, PlatformPickerService } from './platform-picker.service';
 
 @Component({
-  selector: 'app-platform-picker',
-  templateUrl: './platform-picker.component.html',
-  styleUrls: ['./platform-picker.component.css'],
+    selector: 'app-platform-picker',
+    templateUrl: './platform-picker.component.html',
+    styleUrls: ['./platform-picker.component.css'],
+    standalone: false
 })
 export class PlatformPickerComponent implements OnInit {
   platformSelectd!: Platform;
