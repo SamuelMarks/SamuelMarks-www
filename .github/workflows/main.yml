@@ -20,9 +20,9 @@ jobs:
 
       - name: 'build résumé PDF'
         uses: dante-ev/latex-action@latest
-        compiler: pdflatex
         with:
           root_file: 'résumé/Samuel Marks.tex'
+          compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
 
       - name: 'upload résumé PDF'
