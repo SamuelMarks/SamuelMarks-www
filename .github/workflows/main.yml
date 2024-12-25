@@ -28,6 +28,8 @@ jobs:
       - name: 'upload résumé PDF'
         run: |
             gh release delete 'latest' -y
+            git push origin :refs/tags/latest
+            git tag latest -m 'latest'
             gh release create 'latest' 'Samuel Marks.pdf' --notes-from-tag
         env:
             GH_TOKEN: ${{ github.token }}
