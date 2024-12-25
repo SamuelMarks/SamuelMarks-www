@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export type Platform = 'macOS' | 'Linux' | 'Windows';
 
@@ -9,16 +10,22 @@ export class PlatformPickerService {
   ];
   private platform: Platform | undefined;
 
-  constructor() {
-    const platForm = localStorage.getItem('platform');
-    if (platForm == null)
-      this.platform = PlatformPickerService.platforms[1];
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(this.platformId)) {
+      const platForm = localStorage.getItem('platform');
+      if (platForm == null)
+        this.platform = PlatformPickerService.platforms[1];
+    }
   }
 
   // public get platform(): string {
   public getPlatform(): Platform | undefined {
-    const platForm = localStorage.getItem('platform') as Platform;
-    return platForm == null ? this.platform : platForm;
+    if (isPlatformBrowser(this.platformId)) {
+      const platForm = localStorage.getItem('platform') as Platform;
+      return platForm == null ? this.platform : platForm;
+    } else {
+      return undefined;
+    }
   }
 
   public is(platform: Platform): boolean {
@@ -28,6 +35,8 @@ export class PlatformPickerService {
   // public set platform(platForm: string) {
   public setPlatform(platForm: Platform): void {
     this.platform = platForm;
-    localStorage.setItem('platform', platForm);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('platform', platForm);
+    }
   }
 }

@@ -1,5 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
     selector: 'app-slides',
@@ -28,19 +29,20 @@ export class SlidesComponent implements OnInit {
   }
 
   isFullScreen(): boolean {
-    return !document.fullscreenElement;
+    return !this.document.fullscreenElement;
   }
 
   toggleFullScreen() {
     this.isFullScreen() ?
-      document.documentElement.requestFullscreen() :
+      this.document.documentElement.requestFullscreen() :
       // tslint:disable-next-line:no-unused-expression
-      document.exitFullscreen != null &&
-      document.exitFullscreen().catch(console.error);
+      this.document.exitFullscreen != null &&
+      this.document.exitFullscreen().catch(console.error);
   }
 
   constructor(private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              @Inject(DOCUMENT) private document: Document) {
   }
 
   ngOnInit(): void {
