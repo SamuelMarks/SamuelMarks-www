@@ -26,7 +26,9 @@ jobs:
           args: -interaction=nonstopmode -shell-escape
 
       - name: 'upload résumé PDF'
-        run: gh release upload 'latest' 'Samuel Marks.pdf'
+        run: |
+            gh release delete 'Samuel Marks.pdf'
+            gh release upload 'latest' 'Samuel Marks.pdf'
         env:
             GH_TOKEN: ${{ github.token }}
 
