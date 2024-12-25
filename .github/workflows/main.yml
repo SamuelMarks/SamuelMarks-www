@@ -32,7 +32,7 @@ jobs:
             if ! git tag latest -m 'latest' ; then
               git tag -d latest || true
               git tag latest -m 'latest'
-            fij
+            fi
             git push --tags
             gh release create 'latest' 'Samuel Marks.pdf' --notes-from-tag
         env:
