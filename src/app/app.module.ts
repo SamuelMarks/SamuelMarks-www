@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ApplicationConfig, ModuleWithProviders, NgModule} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -8,12 +8,9 @@ import { FooterModule } from './footer/footer.module';
 import { MaterialImportModule } from './material-import/material-import.module';
 import { PlatformPickerService } from './platform-picker/platform-picker.service';
 import { SlashModule } from './slash/slash.module';
-import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
-import { SlidesComponent } from "./slides/slides.component";
 
 @NgModule({
-  declarations: [AppComponent, SlidesComponent],
   imports: [
     BrowserModule, BrowserAnimationsModule, RouterModule, RouterModule.forRoot(appRoutes, {}),
     MaterialImportModule,
@@ -21,8 +18,13 @@ import { SlidesComponent } from "./slides/slides.component";
     FooterModule,
     SlashModule
   ],
-  providers: [PlatformPickerService],
-  bootstrap: [AppComponent]
+  providers: [PlatformPickerService]
 })
 export class AppModule {
+  static forRoot(config: ApplicationConfig): ModuleWithProviders<AppModule> {
+    return {
+      ngModule: AppModule,
+      providers: config.providers,
+    };
+  }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { FlexLayoutServerModule } from '@ngbracket/ngx-layout/server';
 
 import { NavbarModule } from '../navbar/navbar.module';
 import { MlCompilersPackageManagementComponent } from './2024-07_ml-compilers-package-management/2024-07_ml-compilers-package-management.component';
@@ -16,7 +17,7 @@ import { TerminalBlockComponent } from "../terminal-block/terminal-block.compone
   declarations: [PresentationsComponent, MlCompilersPackageManagementComponent],
   imports: [
     CommonModule, RouterModule.forChild(presentationRoutes),
-    FlexLayoutModule,
+    FlexLayoutModule, FlexLayoutServerModule,
     NavbarModule, SvgViewerModule, TerminalBlockComponent
   ]
 })

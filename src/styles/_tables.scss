@@ -1,4 +1,4 @@
-@import './constants';
+@use './constants';
 
 .docs-api table,
 .docs-markdown-table {
@@ -24,7 +24,7 @@
   padding: 8px 16px;
 }
 
-@media (max-width: $small-breakpoint-width) {
+@media (max-width: constants.$small-breakpoint-width) {
   .docs-api table,
   .docs-markdown-table {
     margin: 0 0 32px 0;

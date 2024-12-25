@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     selector: 'app-slides',
     templateUrl: './slides.component.html',
     styleUrls: ['./slides.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class SlidesComponent implements OnInit {
   currentSlide: number = 1;

@@ -1,59 +1,40 @@
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.elevation-classes();
-@include mat.app-background();
+@use './app-theme';
+@use './styles/api';
+@use './styles/markdown';
+@use './styles/tables';
+@use './styles/general';
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$samuelmarks-github-io-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
-$samuelmarks-github-io-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}/* You can add global styles to this file, and also import other style files */
 
-// The warn palette is optional (defaults to red).
-$samuelmarks-github-io-warn: mat.m2-define-palette(mat.$m2-red-palette);
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: #3f51b5,
+    container-text-color: whitesmoke,
+  ));
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$samuelmarks-github-io-theme: mat.m2-define-light-theme((
-  color: (
-    primary: $samuelmarks-github-io-primary,
-    accent: $samuelmarks-github-io-accent,
-    warn: $samuelmarks-github-io-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($samuelmarks-github-io-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
-html, body {
-  height: 100%;
+  footer {
+    a, p {
+      color: whitesmoke;
+      text-decoration:none
+    }
+  }
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-is-active {
-  background: darkblue !important;
-  outline-color: whitesmoke;
-}
-
-code {
-  white-space: pre-wrap;
-  width: 100%;
-}
-
-blockquote[title][cite]:after {
-  content:attr(title)"\a"attr(cite)
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
