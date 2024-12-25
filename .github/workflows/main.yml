@@ -30,6 +30,7 @@ jobs:
             gh release delete 'latest' -y
             git push origin :refs/tags/latest
             git tag latest -m 'latest'
+            git push --tags
             gh release create 'latest' 'Samuel Marks.pdf' --notes-from-tag
         env:
             GH_TOKEN: ${{ github.token }}
