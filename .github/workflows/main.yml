@@ -34,6 +34,11 @@ jobs:
               git tag latest -m 'latest'
             fi
             git push --tags
+            email_author="$(git log -1 --pretty=format:'%an <%ce>')"
+            author="${email_author% *}"
+            git config --global user.name "$author"
+            email="${email_author#*<}"; email="${email::-1}"
+            git config --global user.email "$email"
             gh release create 'latest' 'Samuel Marks.pdf' --notes-from-tag
         env:
             GH_TOKEN: ${{ github.token }}
