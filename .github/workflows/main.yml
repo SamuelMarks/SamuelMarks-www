@@ -25,7 +25,14 @@ jobs:
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
 
-      - name: 'upload résumé PDF'
+      - name: 'build résumé (engineer) PDF'
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: 'résumé/Samuel Marks (engineer).tex'
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+
+      - name: 'upload résumé and engineer PDF'
         run: |
             email_author="$(git log -1 --pretty=format:'%an <%ce>')"
             author="${email_author% *}"
@@ -39,7 +46,7 @@ jobs:
               git tag latest -m 'latest'
             fi
             git push --tags
-            gh release create 'latest' 'Samuel Marks.pdf' --notes-from-tag
+            gh release create --notes-from-tag 'latest' 'Samuel Marks.pdf' 'Samuel Marks (engineer).pdf'
         env:
             GH_TOKEN: ${{ github.token }}
 
