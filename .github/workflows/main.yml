@@ -36,9 +36,9 @@ jobs:
         run: |
             email_author="$(git log -1 --pretty=format:'%an <%ce>')"
             author="${email_author% *}"
-            git config --global user.name "$author"
+            git config --global user.name "${author}"
             email="${email_author#*<}"; email="${email::-1}"
-            git config --global user.email "$email"
+            git config --global user.email "${email}"
             gh release delete 'latest' -y || true
             git push origin :refs/tags/latest || true
             if ! git tag latest -m 'latest' ; then
@@ -61,14 +61,13 @@ jobs:
           npm i -g @angular/cli typescript angular-cli-ghpages
           ng add --skip-confirmation angular-cli-ghpages
           npm ci
-          MSG="$(git show -s --format='%s' "$GITHUB_SHA")"
+          MSG="$(git show -s --format='%s' "${GITHUB_SHA}")"
           email_author="$(git log -1 --pretty=format:'%an <%ce>')"
           author="${email_author% *}"
-          git config --global user.name "$author"
+          git config --global user.name "${author}"
           email="${email_author#*<}"; email="${email::-1}"
-          git config --global user.email "$email"
-          ng build --configuration production  # --base-href 'https://'"$CNAME"
-          head -n6 README.md > "$DIST"'/README.md'
-          mv "$DIST"'/browser'/* "$DIST"
-          npx angular-cli-ghpages --dir="$DIST" --repo='https://'"$GITHUB_TOKEN"'@github.com/'"$TARGET" --branch='master' --message="$MSG" --name="$name" --email="$email" --no-silent
-
+          git config --global user.email "${email}"
+          ng build --configuration production  # --base-href 'https://'"${CNAME}"
+          head -n6 "${GITHUB_WORKSPACE}"'/SamuelMarks-www/README.md' > "${DIST}"'/README.md'
+          mv "${DIST}"'/browser'/* "${DIST}"
+          npx angular-cli-ghpages --dir="${DIST}" --repo='https://'"${GITHUB_TOKEN}"'@github.com/'"${TARGET}" --branch='master' --message="${MSG}" --name="${name}" --email="${email}" --no-silent
