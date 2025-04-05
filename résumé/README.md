@@ -5,7 +5,7 @@ Samuel Marks' résumé.
 
 ## Dependencies
 
-    tlmgr install marvosym fira fontaxes
+    tlmgr install fira fontaxes listingsutf8 marvosym pdfcol tcolorbox tikzfill
 
 ## Build
 

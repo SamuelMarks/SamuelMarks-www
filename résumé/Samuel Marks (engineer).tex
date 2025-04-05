@@ -24,6 +24,26 @@
 \usepackage{FiraSans}        % Change this to use any font, but keep it simple
 \renewcommand{\familydefault}{\sfdefault}
 
+\usepackage[most]{tcolorbox}
+
+\definecolor{mybluei}{RGB}{124,156,205}
+\definecolor{myblueii}{RGB}{73,121,193}
+\definecolor{mygreen}{RGB}{202,217,126}
+\definecolor{mypink}{RGB}{233,198,235}
+\definecolor{myorange}{RGB}{255,127,80}
+\definecolor{palegoldenrod}{RGB}{238,232,170}
+\definecolor{darkpink}{RGB}{255, 155, 148}
+
+\tcbset{
+    innerbox/.style={fontupper=\sffamily\bfseries\small,
+        size=small, colupper=white, halign=center, valign=center,
+        colframe=white, boxrule=1pt, colback=mybluei},
+    outerbox/.style={fontupper=\sffamily\bfseries,
+        size=small, colupper=white, halign=center,
+        colframe=black!70, boxrule=1pt, colback=myblueii, 
+        boxsep=1pt, left=1pt, right=1pt},       
+}
+
 \definecolor{cvblue}{HTML}{304263}
 
 \graphicspath{{./résumé}}
@@ -65,7 +85,7 @@
 \Large Samuel \textbf{\textsc{Marks}}, PhD \normalsize 
 
 % Centering without extra vertical spacing
-\null\hfill\includegraphics[width=0.65\textwidth]{user.jpg}\hfill\null
+%\null\hfill\includegraphics[width=0.65\textwidth]{imagesuser.jpg}\hfill\null
 
 \vspace*{0.5ex} % Extra space after the picture
 
@@ -101,18 +121,51 @@ Split my life in three: family; medical charity; and business. The unrelated-to-
 \hypersetup{linkcolor=black}
 
 \headright{Approach}
-Develop open-source: compilers; DevOps; and developer tooling. To speedup development; trivialise portability across platforms (OS; distribution; cloud); facilitate the speedy onboarding of new engineers; in summary: to accelerate the delivery of high quality software.
+My goal is to develop open-source compilers, DevOps, and developer tooling in order to accelerate development, trivialise portability across platforms (OS; distribution; cloud), and facilitate onboarding of new engineers.
 
-Engineer new compilers to translate OpenAPI \(\leftrightarrow\) \{Rust; Swift; Kotlin Multiplatform; C; TypeScript; Python\} in order to speedup the development of multi-tier multi-language applications (e.g., mobile apps; web frontends; REST API backends).
+My current focus is engineering new compilers to [bidirectionally] translate OpenAPI \(\leftrightarrow\) numerous targets (including Rust, Swift, Kotlin Multiplatform, C, TypeScript, and Python) in order to speed up the development of multi-tier, multi-language applications (e.g., mobile apps; web frontends; REST API backends).
 
-Engineer new DevOps / GitOps / MLOps tooling where Docker is optional. Support native: Windows; Linux; macOS; SunOS; HP/UX; z/OS; iOS; and Android. Written in shell\textemdash{}Bourne Shell, Bash, Windows Batch, Microsoft PowerShell\textemdash{}complimented by new package managers in C and Rust.
+My recent work involved engineering new DevOps / GitOps / MLOps tooling where Docker is optional, with support for native Windows, Linux, macOS, SunOS, HP/UX, z/OS, iOS, and Android.  This was written in shell (Bourne Shell, Bash, Windows Batch, Microsoft PowerShell), complemented by new package managers in C, Go, and Rust.
 
-Research driven, holding a PhD and a fellowship at Harvard. I am a top contributor to Keras, the 2nd most popular Machine Learning framework. C++ contributions sent to both PyTorch and TensorFlow for optimising their vector allocations. I am a Google Developer Expert for Machine Learning / Artificial Intelligence (ML/AI GDE); Google also just granted me \$3.2M worth of cloud credits for their TPUs.
+I am research driven, holding a PhD and a fellowship at Harvard. I am a top contributor to Keras, the 2nd most popular Machine Learning framework. I have made C++ contributions to both PyTorch and TensorFlow for optimising their vector allocations. I am a Google Developer Expert for Machine Learnin (ML/AI GDE).
 
+\headright{Technical expertise}
+I take pride in working at every level of the stack:
+
+\begin{tcbitemize}[raster columns=1, outerbox, 
+    raster row skip=2pt]
+    \tcbitem[colback=mybluei!40] 
+        \begin{tcbitemize}[raster columns=6, raster rows=5, 
+            raster equal height=all, 
+            raster row skip=1pt, 
+            raster column skip=1pt, 
+            title style={left color=yellow!50!blue,right color=blue!50!green!50!black},
+            innerbox]
+            \tcbitem[raster multicolumn=6, colframe=blue!50!green!50!black, colback=blue!50!green!50!black, height=1cm] Stakeholders (users; customers; investors)
+            \tcbitem Java (\mbox{Android})
+            \tcbitem Swift (iOS)
+            \tcbitem Kotlin Multiplatform (Android, iOS, web, desktop)
+            \tcbitem Angular, HTML, SCSS (web)
+            \tcbitem SDKs (C, Rust, go, Python, TypeScript, Kotlin, JavaScript)
+            \tcbitem CLIs (cross-platform)
+            \tcbitem[colback=myorange] Rust (actix + diesel)
+            \tcbitem[colback=myorange] Python (Bottle; Flask; FastAPI)
+            \tcbitem[raster multicolumn=2, colback=myorange] (Node.js; Bun; Deno) with (TypeScript + ORMs + express \textbar{} restify)
+            \tcbitem[colback=myorange] go
+            \tcbitem[colback=myorange] C/C++
+            \tcbitem[colback=purple]Build systems (CMake, Makefile, Fabric; clang, vcpkg)
+            \tcbitem[raster multicolumn=2, colback=purple] Package management (incl. package authoring; and new package managers)
+            \tcbitem[raster multicolumn=2, colback=purple] Multicloud (Apache Libcloud contrib. 30+ clouds incl. AWS, Google Cloud, VMware, \textellipsis{})
+            \tcbitem[colback=purple] Cross-platform deployment shell scripts
+            \tcbitem[raster multicolumn=3,colback=darkpink] TensorFlow, PyTorch, Keras, MaxText (large-scale LLM training) contributions
+            \tcbitem[raster multicolumn=3, colback=mygreen!140] Compilers to go from/to OpenAPI
+        \end{tcbitemize}
+%    \tcbitem[colback=myblueii, height=8mm, valign=center] Java Runtime
+\end{tcbitemize}
 
 \headright{Experience}
 
-\textit{Mass. Eye and Ear Infimary / Harvard Medical School.}  \dates{2021+} \\
+\textit{Mass. Eye and Ear Infirmary / Harvard Medical School.}  \dates{2021+} \\
 \smaller{Collaborating with ophthalmologists on initiating new medical diagnostic screening programmes that are wholly charitable, open-source, patent-free, and AI-driven; and analysing \& modelling from historical data in preparation.}
 
 \is
@@ -121,7 +174,7 @@ Research driven, holding a PhD and a fellowship at Harvard. I am a top contribut
 
 \smaller{Engineers open-source developer tools to speedup engineering of scalable software. Foci on: cross-platform, multi-ML, multicloud, and compilers to translate across codebases. \href{https://github.com/offscale}{github.com/offscale}}
 
-\smaller{\textit{NOTE: Firm purposefully avoids anything related to medicine so as to avoid actual\textemdash{}or perceived\textemdash{}conflicts of interest with charitable research.}} 
+\smaller{\textit{NOTE: Firm purposefully avoids anything related to medicine to avoid actual\textemdash{}or perceived\textemdash{}conflicts of interest with charitable research.}} 
 
 
 \headright{Education}
@@ -138,6 +191,87 @@ Research driven, holding a PhD and a fellowship at Harvard. I am a top contribut
 \headright{Open-source}
 
 700+ repositories on GitHub, >300 of these original projects (not forks). Top-10 contributor to Google's Keras (2nd-most popular ML framework; with 13 million downloads per month; as of Feb 2025).
+
+\end{minipage}
+
+\begin{minipage}[t]{0.33\textwidth} %% Left column -- outer definition
+%  Left column -- top dark rectangle
+\colorbox{cvblue}{\begin{minipage}[t][5mm][t]{\textwidth}\null\hfill\null\end{minipage}}
+
+\vspace{-.2ex} % Eliminates the small gap
+\colorbox{cvblue!90}{\color{white}  %% LEFT BOX
+\kern0.09\textwidth\relax% Left margin provided explicitly
+\begin{minipage}[t][293mm][t]{0.82\textwidth}
+\raggedright
+\vspace*{2.5ex}
+
+\Large Samuel \textbf{\textsc{Marks}}, PhD \normalsize 
+
+% Centering without extra vertical spacing
+%\null\hfill\includegraphics[width=0.65\textwidth]{user.jpg}\hfill\null
+
+\vspace*{0.5ex} % Extra space after the picture
+
+\headleft{Differentiator}
+I build technologies to speed-up development, and futureproof software-engineering.
+
+\headleft{Links}
+\small % To fit more content
+\MVAt\ \href{mailto://samuelmarks@gmail.com}{\small samuelmarks@gmail.com} \\[0.4ex]
+\Mundus\ \href{https://github.com/SamuelMarks}{github.com/SamuelMarks} \\[0.1ex]
+\normalsize
+
+\headleft{Open source projects}
+800+ GitHub repositories, incl.:\\
+\smaller{Compiler implementations in Rust, Python, C, Swift, Java, and Kotlin}\\
+\smaller{OAuth2 server implementations in Rust, Python, and Node.js}\\
+\smaller{New package managers in: go; Bourne Shell (\texttt{/bin/sh}); C; and Rust}\\
+\smaller{Getting-started scaffolds in Angular, Python, Rust, Swift, Kotlin, Java}\\
+\smaller{\textbraceleft{}CLI, SQL, GUI, SDK\textbraceright{} [bidirectional] generation from/to Python SDKs, e.g., major machine-learning frameworks like Keras}\\
+\smaller{Multicloud provisioning and deprovisioning toolchains, including new JSON wrappers in Python, a new Google Cloud C SDK, and a new WASM implementation}\\
+\smaller{1-click deployment + documentation system generation from my new shell script library; including porting Apache Libcloud to WASM (WebAssembly)}
+
+\end{minipage}%
+\kern0.09\textwidth\relax%%Right margin provided explicitly to stretch the colourbox
+}
+\end{minipage}% Right column
+\hskip2.5em% Left margin for the white area
+\begin{minipage}[t]{0.56\textwidth}
+\setlength{\parskip}{0.8ex}% Adds spaces between paragraphs; use \\ to add new lines without this space. Shrink this amount to fit more data vertically
+
+\vspace{2ex}
+\hypersetup{urlcolor=black}
+\hypersetup{linkcolor=black}
+
+\headright{Experience}
+
+\textit{Mass. Eye and Ear Infirmary / Harvard Medical School.}  \dates{2021+} \\
+\smaller{Collaborating with ophthalmologists on initiating new medical diagnostic screening programmes that are wholly charitable, open-source, patent-free, and AI-driven; and analysing \& modelling from historical data in preparation.}
+
+\is
+\textsc{Head of software engineering} at \textit{consultancy \href{https://offscale.io}{offscale.io}} \dates{2015+} \\
+\smaller{Consulting for various high-net-worth individuals, the odd venture capital firm, and any random project introduced word-of-mouth to me. Ranges from just me, to as many as 20 engineers.}
+
+\smaller{Engineers open-source developer tools to speedup engineering of scalable software. Foci on: cross-platform, multi-ML, multicloud, and compilers to translate across codebases. \href{https://github.com/offscale}{github.com/offscale}}
+
+\smaller{\textit{NOTE: Firm purposefully avoids anything related to medicine to avoid actual\textemdash{}or perceived\textemdash{}conflicts of interest with charitable research.}} 
+
+
+\headright{Education}
+
+\textsc{Fellowship}. \textit{Harvard Medical School}. \dates{2021+}
+
+\textsc{Doctor of Philosophy (PhD)}. \textit{University of Sydney}. \dates{2015--2020}
+
+\is
+\textsc{Bachelor of Science}. School of Computing. \textit{Macquarie U}.  \dates{2010--2014}
+\smaller{Covered a range of subjects supporting my passion for computer science.}
+
+
+\headright{Open-source}
+\includegraphics[width=1.101\columnwidth]{images/github0.png}
+\includegraphics[width=1.101\columnwidth]{images/github1.png}
+800+ repositories on GitHub, >300 of these original projects (not forks). Top-10 contributor to Google's \href{https://keras.io}{Keras} (2nd-most popular ML framework; with 13 million downloads per month; as of Feb 2025). Maintainer of Google's large-scale LLM training reference\textemdash{}that they test on >50,000 TPUs\textemdash{}\href{https://github.com/AI-Hypercomputer/maxtext}{https://github.com/AI-Hypercomputer/maxtext}.
 
 \end{minipage}
 
