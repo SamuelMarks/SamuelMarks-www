@@ -46,6 +46,9 @@ jobs:
               git tag latest -m 'latest'
             fi
             git push --tags
+            sudo apt-get install -y qpdf
+            qpdf 'Samuel Marks (engineer).pdf' --pages . 2-3 -- a.pdf
+            mv a.pdf 'Samuel Marks (engineer).pdf'
             gh release create --notes-from-tag 'latest' 'Samuel Marks.pdf' 'Samuel Marks (engineer).pdf'
         env:
             GH_TOKEN: ${{ github.token }}
