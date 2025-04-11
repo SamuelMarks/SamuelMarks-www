@@ -47,7 +47,7 @@ jobs:
             fi
             git push --tags
             sudo apt-get install -y qpdf
-            qpdf 'Samuel Marks (engineer).pdf' --pages . 2-3 -- a.pdf
+            qpdf 'Samuel Marks (engineer).pdf' --pages . 1-2 -- a.pdf
             mv a.pdf 'Samuel Marks (engineer).pdf'
             gh release create --notes-from-tag 'latest' 'Samuel Marks.pdf' 'Samuel Marks (engineer).pdf'
         env:
@@ -73,5 +73,5 @@ jobs:
           ng build --configuration production --output-path "${DIST}"  # --base-href 'https://'"${CNAME}"
           [ -d "${DIST}" ] || mkdir -p -- "${DIST}"
           head -n6 'README.md' > "${DIST}"'/README.md'
-          cp -- "${DIST}"'/'{README.md,.nojekyll,3rdpartylicenses.txt,prerendered-routes.json} "${DIST}"'/browser/'
+          cp -- "${DIST}"'/'{*.md,*.json} "${DIST}"'/browser/'
           npx angular-cli-ghpages --dir="${DIST}"'/browser' --repo='https://'"${GITHUB_TOKEN}"'@github.com/'"${TARGET}" --branch='master' --message="${MSG}" --name="${name}" --email="${email}" --no-silent
