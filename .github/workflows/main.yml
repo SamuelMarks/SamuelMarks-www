@@ -73,4 +73,5 @@ jobs:
           ng build --configuration production --output-path "${DIST}"  # --base-href 'https://'"${CNAME}"
           [ -d "${DIST}" ] || mkdir -p -- "${DIST}"
           head -n6 'README.md' > "${DIST}"'/README.md'
-          npx angular-cli-ghpages --dir="${DIST}" --repo='https://'"${GITHUB_TOKEN}"'@github.com/'"${TARGET}" --branch='master' --message="${MSG}" --name="${name}" --email="${email}" --no-silent
+          cp -- "${DIST}"'/'{README.md,.nojekyll,3rdpartylicenses.txt,prerendered-routes.json} "${DIST}"'/browser/'
+          npx angular-cli-ghpages --dir="${DIST}"'/browser' --repo='https://'"${GITHUB_TOKEN}"'@github.com/'"${TARGET}" --branch='master' --message="${MSG}" --name="${name}" --email="${email}" --no-silent
