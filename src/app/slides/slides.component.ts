@@ -1,6 +1,6 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, DOCUMENT } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+
 
 @Component({
     selector: 'app-slides',

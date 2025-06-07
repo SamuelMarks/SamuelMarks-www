@@ -267,291 +267,295 @@
   }
   @case (15) {
     <div class="slide scroller code-bg pad-slide">
-    <pre class="theme-atom-one-dark shadow-3xl text-sm relative overflow-hidden max-w-full tab-size h-full"><span
-      class="hljs mb-0 p-4 block min-h-full overflow-auto"><code><span class="hljs-meta">#<span
+      <pre class="theme-atom-one-dark shadow-3xl text-sm relative overflow-hidden max-w-full tab-size h-full"><span
+        class="hljs mb-0 p-4 block min-h-full overflow-auto"><code><span class="hljs-meta">#<span
       class="hljs-keyword">if</span> __linux__</span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span
-  class="hljs-string">&lt;string.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span
+      <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span
+    class="hljs-string">&lt;string.h&gt;</span></span>
+    <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span
   class="hljs-string">&lt;unistd.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span
-  class="hljs-string">&lt;sys/utsname.h&gt;</span></span>
+  <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span
+class="hljs-string">&lt;sys/utsname.h&gt;</span></span>
 
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"systemd.h"</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">elif</span> !defined(WIN32) &amp;&amp; !defined(_WIN32) &amp;&amp; !defined(__WIN32__) &amp;&amp; !defined(__NT__)</span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/param.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span
-  class="hljs-string">&lt;sys/utsname.h&gt;</span></span>
+class="hljs-string">&lt;sys/utsname.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">endif</span></span>
 
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span
-  class="hljs-string">"distribution.h"</span></span>
+class="hljs-string">"distribution.h"</span></span>
 
 
 <span class="hljs-keyword">inline</span> <span class="hljs-type">const</span> <span class="hljs-type">char</span>* <span
-        class="hljs-title function_">get_distribution</span><span class="hljs-params">(<span
-        class="hljs-type">void</span>)</span> &lbrace;
-      <span class="hljs-meta">#<span class="hljs-keyword">if</span> defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)</span>
-          <span class="hljs-keyword">return</span> <span class="hljs-string">"Windows"</span>;
-      <span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined(__FreeBSD__)</span>
-          <span class="hljs-keyword">return</span> <span class="hljs-string">"FreeBSD"</span>;
-      <span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined(__NetBSD__)</span>
-          <span class="hljs-keyword">return</span> <span class="hljs-string">"NetBSD"</span>;
-      <span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined (__APPLE__) &amp;&amp; defined (__MACH__)</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"macOS"</span>;
+class="hljs-title function_">get_distribution</span><span class="hljs-params">(<span
+class="hljs-type">void</span>)</span> &lbrace;
+<span class="hljs-meta">#<span class="hljs-keyword">if</span> defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)</span>
+<span class="hljs-keyword">return</span> <span class="hljs-string">"Windows"</span>;
+<span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined(__FreeBSD__)</span>
+<span class="hljs-keyword">return</span> <span class="hljs-string">"FreeBSD"</span>;
+<span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined(__NetBSD__)</span>
+<span class="hljs-keyword">return</span> <span class="hljs-string">"NetBSD"</span>;
+<span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined (__APPLE__) &amp;&amp; defined (__MACH__)</span>
+<span class="hljs-keyword">return</span> <span class="hljs-string">"macOS"</span>;
 <span class="hljs-meta">#<span class="hljs-keyword">elif</span> __linux__</span>
-    <span class="hljs-comment">/* List compiled from:
-     * - https://www.freedesktop.org/software/systemd/man/os-release.html
-     * - http://0pointer.de/blog/projects/os-release.html
-     * - http://linuxmafia.com/faq/Admin/release-files.html
-     */</span>
+<span class="hljs-comment">/* List compiled from:
+  * - https://www.freedesktop.org/software/systemd/man/os-release.html
+  * - http://0pointer.de/blog/projects/os-release.html
+  * - http://linuxmafia.com/faq/Admin/release-files.html
+*/</span>
 
 <span class="hljs-type">const</span> <span class="hljs-type">char</span>* dist = dist_from_os_release();
 <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strlen</span>(dist) != <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> dist;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> dist;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/arch-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"arch"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"arch"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/altlinux-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"altlinux"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"altlinux"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/angstrom-version"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"angstrom"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"angstrom"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/annvix-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"annvix"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"annvix"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/arklinux-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"arklinux"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"arklinux"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/aurox-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"aurox"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"aurox"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/blackcat-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"blackcat"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"blackcat"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/cobalt-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"cobalt"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"cobalt"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/conectiva-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"conectiva"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"conectiva"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/debian_version"</span>, F_OK) == <span
-        class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/debian_release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"debian"</span>;
+class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/debian_release"</span>, F_OK) == <span
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"debian"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/fedora-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"fedora"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"fedora"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/eos-version"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"FreeEOS"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"FreeEOS"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/frugalware-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"frugalware"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"frugalware"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/gentoo-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"gentoo"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"gentoo"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/hlfs-release"</span>, F_OK) == <span
-        class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/hlfs_release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"HLFS"</span>;
+class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/hlfs_release"</span>, F_OK) == <span
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"HLFS"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/immunix-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"immunix"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"immunix"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"knoppix_version"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"knoppix"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"knoppix"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/lfs-release"</span>, F_OK) == <span
-        class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/lfs_version"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"LFS"</span>;
+class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/lfs_version"</span>, F_OK) == <span
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"LFS"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/linuxppc-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"Linux-PPC"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"Linux-PPC"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/mageia-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"mageia"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"mageia"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/mandrake-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"mandrake"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"mandrake"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/mandriva-release"</span>, F_OK) == <span
-        class="hljs-number">0</span> || access(<span
-        class="hljs-string">"/etc/mandakelinux-release"</span>, F_OK) == <span class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"mandriva"</span>;
+class="hljs-number">0</span> || access(<span
+class="hljs-string">"/etc/mandakelinux-release"</span>, F_OK) == <span class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"mandriva"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/meego-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"meego"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"meego"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/mklinux-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"MkLinux"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"MkLinux"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/nld-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"Novell Linux Desktop"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"Novell Linux Desktop"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/pld-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"PLD Linux"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"PLD Linux"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/redhat-release"</span>, F_OK) == <span
-        class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/redhat_version"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"RHEL"</span>;
+class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/redhat_version"</span>, F_OK) == <span
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"RHEL"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/rubix-version"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"rubix"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"rubix"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/slackware-version"</span>, F_OK) == <span
-        class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/slackware-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"slackware"</span>;
+class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/slackware-release"</span>, F_OK) == <span
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"slackware"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/e-smith-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"SME Server"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"SME Server"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"Solaris SPARC"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"Solaris SPARC"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/sun-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"Sun JDS"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"Sun JDS"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/SuSE-release"</span>, F_OK) == <span
-        class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/novell-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>
-         || access(<span class="hljs-string">"/etc/sles-release"</span>, F_OK) == <span class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"SuSE"</span>;
+class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/novell-release"</span>, F_OK) == <span
+class="hljs-number">0</span>
+|| access(<span class="hljs-string">"/etc/sles-release"</span>, F_OK) == <span class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"SuSE"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/synoinfo.conf"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"Synology"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"Synology"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/tinysofa-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"tinysofa"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"tinysofa"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/trustix-release"</span>, F_OK) == <span
-        class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/trustix-version"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"trustix"</span>;
+class="hljs-number">0</span> || access(<span class="hljs-string">"/etc/trustix-version"</span>, F_OK) == <span
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"trustix"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/turbolinux-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"TurboLinux"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"TurboLinux"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/ultrapenguin-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"ultrapenguin"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"ultrapenguin"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/UnitedLinux-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"UnitedLinux"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"UnitedLinux"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/va-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"VA-Linux/RH-VALE"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"VA-Linux/RH-VALE"</span>;
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (access(<span class="hljs-string">"/etc/yellowdog-release"</span>, F_OK) == <span
-        class="hljs-number">0</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"yellowdog"</span>;
+class="hljs-number">0</span>)
+<span class="hljs-keyword">return</span> <span class="hljs-string">"yellowdog"</span>;
 <span class="hljs-keyword">else</span> &lbrace;
-    <span class="hljs-keyword">struct</span> utsname unameD;
-    uname(&amp;unameD);
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">strlen</span>(unameD.nodename) &gt; <span
-        class="hljs-number">0</span> ? unameD.nodename : unameD.sysname;
+<span class="hljs-keyword">struct</span> utsname unameD;
+uname(&amp;unameD);
+<span class="hljs-keyword">return</span> <span class="hljs-built_in">strlen</span>(unameD.nodename) &gt; <span
+class="hljs-number">0</span> ? unameD.nodename : unameD.sysname;
 &rbrace;
 <span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined(__sun) &amp;&amp; defined(__SVR4)</span>
-    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">utsname</span> <span
-      class="hljs-title">unameD</span>;</span>
-    uname(&amp;unameD);
-    <span class="hljs-keyword">return</span> unameD.nodename;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">utsname</span> <span
+class="hljs-title">unameD</span>;</span>
+uname(&amp;unameD);
+<span class="hljs-keyword">return</span> unameD.nodename;
 <span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined (__unix__)</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"UNIX"</span>;
+<span class="hljs-keyword">return</span> <span class="hljs-string">"UNIX"</span>;
 <span class="hljs-meta">#<span class="hljs-keyword">else</span></span>
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"Unknown"</span>;
+<span class="hljs-keyword">return</span> <span class="hljs-string">"Unknown"</span>;
 <span class="hljs-meta">#<span class="hljs-keyword">endif</span></span>
 &rbrace;</code></span></pre>
-    </div>
-  }
-  @case (16) {
-    <iframe id="verMan.io" title="verMan.io"
-            width="100%" height="80%"
-            src="https://verman.io">
-    </iframe>
-  }
-  @case (17) {
-    <div class="slide">
-      <h4>What is CDD?</h4>
-      <p>A series of compilers&mdash;and methodology for creating new compilers&mdash;that traverses the Abstract Syntax
-        Tree (AST) of each language, and translates across:</p>
-      <ul ngStyle.lt-lg="column-count: 1" ngStyle.gt-sm="column-count: 3">
-        <li>API client|server</li>
-        <li>models</li>
-        <li>validation</li>
-        <li>docs</li>
-        <li>tests and mocks</li>
-      </ul>
-    </div>
-  }
-  @case (18) {
-    <div class="slide">
-      <h3>Compiler Driven Development (CDD)</h3>
-      <p>Automated changes for vendor-specific languages for each frontend and decoupled backend.</p>
+</div>
+}
+@case (16) {
+  <iframe id="verMan.io" title="verMan.io"
+    width="100%" height="80%"
+    src="https://verman.io">
+  </iframe>
+}
+@case (17) {
+  <div class="slide">
+    <h4>What is CDD?</h4>
+    <p>A series of compilers&mdash;and methodology for creating new compilers&mdash;that traverses the Abstract Syntax
+    Tree (AST) of each language, and translates across:</p>
+    <ul ngStyle.lt-lg="column-count: 1" ngStyle.gt-sm="column-count: 3">
+      <li>API client|server</li>
+      <li>models</li>
+      <li>validation</li>
+      <li>docs</li>
+      <li>tests and mocks</li>
+    </ul>
+  </div>
+}
+@case (18) {
+  <div class="slide">
+    <h3>Compiler Driven Development (CDD)</h3>
+    <p>Automated changes for vendor-specific languages for each frontend and decoupled backend.</p>
 
-      <h4>Advantages</h4>
-      <ul>
-        <li>Conceivable to maintain <strong>100% test coverage</strong></li>
-        <li>Speedup making changes across language boundaries (e.g., adding a property to a model is <strong>36&times;
-          faster</strong>)
-        </li>
-        <li>All the advantages of native development (e.g., see <a routerLink="." fragment="19">slide 19</a>)</li>
-      </ul>
-    </div>
-  }
-  @case (19) {
-    <div class="slide">
-      <h3>Compiler Driven Development (CDD)</h3>
-      <p>Automated changes for vendor-specific languages for each frontend and decoupled backend.</p>
+    <h4>Advantages</h4>
+    <ul>
+      <li>Conceivable to maintain <strong>100% test coverage</strong></li>
+      <li>Speedup making changes across language boundaries (e.g., adding a property to a model is <strong>36&times;
+      faster</strong>)
+    </li>
+    <li>All the advantages of native development (e.g., see <a routerLink="." fragment="19">slide 19</a>)</li>
+  </ul>
+</div>
+}
+@case (19) {
+  <div class="slide">
+    <h3>Compiler Driven Development (CDD)</h3>
+    <p>Automated changes for vendor-specific languages for each frontend and decoupled backend.</p>
 
-      <h4>Disadvantages</h4>
-      <ul>
-        <li>Time to write each compiler</li>
-        <li>Time to develop for each design pattern, paradigm, and directory structure</li>
-        <li>Institutional inertia</li>
-      </ul>
-    </div>
-  }
-  @case (20) {
-    <iframe id="compilers.com.au" title="compilers.com.au"
-            width="100%" height="80%"
-            src="https://compilers.com.au">
-    </iframe>
-  }
-  @case (21) {
-    <div class="slide">
-      <h3>Machine learning</h3>
-      <p>Are frameworks interoperable with each other?</p>
-      <blockquote style="margin-bottom: 0">“We can solve any problem by introducing an extra level of indirection.”
-      </blockquote>
-      <small style="margin-left: 45px">&mdash; <a
-        href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering" target="_blank">Fundamental
-        theorem of software engineering</a></small>
-    </div>
-  }
-  @case (22) {
-    <iframe id="kitchenSink.ai" title="kitchenSink.ai"
-            width="100%" height="80%"
-            src="https://kitchenSink.ai">
-    </iframe>
-  }
-  @case (23) {
-    <div class="slide">
-      <h3>Thanks for your time. Any questions?</h3>
-      <p>PS: Yes I run a software-engineering consultancy.</p>
-    </div>
-  }
+    <h4>Disadvantages</h4>
+    <ul>
+      <li>Time to write each compiler</li>
+      <li>Time to develop for each design pattern, paradigm, and directory structure</li>
+      <li>Institutional inertia</li>
+    </ul>
+  </div>
+}
+@case (20) {
+  <iframe id="compilers.com.au" title="compilers.com.au"
+    width="100%" height="80%"
+    src="https://compilers.com.au">
+  </iframe>
+}
+@case (21) {
+  <div class="slide">
+    <h3>Machine learning</h3>
+    <p>Are frameworks interoperable with each other?</p>
+    <blockquote style="margin-bottom: 0">“We can solve any problem by introducing an extra level of indirection.”
+    </blockquote>
+    <small style="margin-left: 45px">&mdash; <a
+      href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering" target="_blank">Fundamental
+    theorem of software engineering</a></small>
+  </div>
+}
+@case (22) {
+  <iframe id="kitchenSink.ai" title="kitchenSink.ai"
+    width="100%" height="80%"
+    src="https://kitchenSink.ai">
+  </iframe>
+}
+@case (23) {
+  <div class="slide">
+    <h3>Thanks for your time. Any questions?</h3>
+    <p>PS: Yes I run a software-engineering consultancy.</p>
+  </div>
+}
 }
 
 <div fxLayout="row" fxLayoutGap="20px" style="width: 80px; background: transparent; border: none; ">
-  <button fxFlex (click)="prev()" class="trans-button" style="font-size: 20px" *ngIf="currentSlide !== 0">
-    &larr;
-  </button>
+  @if (currentSlide !== 0) {
+    <button fxFlex (click)="prev()" class="trans-button" style="font-size: 20px">
+      &larr;
+    </button>
+  }
 
-  <button fxFlex (click)="next()" class="trans-button" style="font-size: 20px" *ngIf="currentSlide !== totalSlides">
-    &rarr;
-  </button>
+  @if (currentSlide !== totalSlides) {
+    <button fxFlex (click)="next()" class="trans-button" style="font-size: 20px">
+      &rarr;
+    </button>
+  }
 
   <button fxFlex (click)="toggleFullScreen()" class="trans-button" style="height: 5px; width: 5px">
     <app-svg-viewer style="height: 5px; width: 5px"
-                    [src]="isFullScreen()? '/fullscreen-24px.svg' : '/fullscreen_exit-24px.svg'">
+      [src]="isFullScreen()? '/fullscreen-24px.svg' : '/fullscreen_exit-24px.svg'">
     </app-svg-viewer>
   </button>
 </div>
