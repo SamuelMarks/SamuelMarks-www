@@ -3,7 +3,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatCommonModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -18,15 +17,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
-    MatCommonModule,
     MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule,
-    MatCommonModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
+    MatDialogModule, MatFormFieldModule, MatGridListModule,
     MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule,
     MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule
   ],
   exports: [
     MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule,
-    MatCommonModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
+    MatDialogModule, MatFormFieldModule, MatGridListModule,
     MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule,
     MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule
   ]
